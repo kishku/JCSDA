@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Compiler/MPI combination
-export JEDI_COMPILER="gnu/7.3.0"
-export MPI="openmpi/3.1.3"
+export JEDI_COMPILER="gnu/7.4.0"
+export MPI="openmpi/3.1.4"
 
 # This tells jedi-stack how you want to build the compiler and mpi modules
 # valid options include:
@@ -15,7 +15,7 @@ export JEDI_COMPILER_BUILD="native-module"
 export MPI_BUILD="native-module"
 
 # Build options
-export PREFIX=/glade/work/miesch/modules
+export PREFIX=${OPT:-/glade/work/miesch/modules}
 export USE_SUDO=N
 export PKGDIR=pkg
 export LOGDIR=buildscripts/log

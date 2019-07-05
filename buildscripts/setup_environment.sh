@@ -113,7 +113,7 @@ case $1 in
     cd libs
     sed -i -e 's/COMPILER/JEDI_COMPILER/g' *.sh
 
-    export OPT="/glade/work/miesch/modules"
+    export OPT=${OPT:-"/glade/work/miesch/modules"}
     echo "export OPT=$OPT" >> $HOME/.bashrc
     echo "module use $OPT/modulefiles/core" >> $HOME/.bashrc
 
