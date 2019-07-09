@@ -109,9 +109,9 @@ case $1 in
     # Cheyenne compiler modules define the environment variable MODULE so in order for
     # the build scripts to function properly we need to replace it with something else
     cd ${JEDI_STACK_ROOT}/buildscripts
-    sed -i -e 's/COMPILER/JEDI_COMPILER/g' setup_modules.sh build_stack.sh
+    sed -i -e 's/$COMPILER/$JEDI_COMPILER/g' setup_modules.sh build_stack.sh
     cd libs
-    sed -i -e 's/COMPILER/JEDI_COMPILER/g' *.sh
+    sed -i -e 's/$COMPILER/$JEDI_COMPILER/g' *.sh
 
     export OPT=${OPT:-"/glade/work/miesch/modules"}
     echo "export OPT=$OPT" >> $HOME/.bashrc
