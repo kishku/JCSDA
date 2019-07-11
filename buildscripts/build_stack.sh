@@ -108,7 +108,7 @@ $MODULES && (set +x; module purge; set -x)
     libs/build_netcdf.sh "4.7.0" "4.4.5" "4.3.0" 2>&1 | tee "$logdir/netcdf.log"
 
 [[ $STACK_BUILD_ECKIT =~ [yYtT] ]] && \
-    libs/build_eckit.sh "0.23.0" 2>&1 | tee "$logdir/eckit.log"
+    libs/build_eckit.sh "1.1.0" 2>&1 | tee "$logdir/eckit.log"
 
 # The first argument is the source, either "ecmwf" or "jcsda" (fork)
 [[ $STACK_BUILD_FCKIT =~ [yYtT] ]] && \
