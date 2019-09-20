@@ -126,6 +126,9 @@ $MODULES && (set +x; module purge; set -x)
 [[ $STACK_BUILD_ODB      =~ [yYtT] ]] && \
     libs/build_odb.sh "0.18.1.r2" 2>&1 | tee "$logdir/odb.log"
 
+[[ $STACK_BUILD_ATLAS =~ [yYtT] ]] && \
+    libs/build_atlas.sh "0.18.0" 2>&1 | tee "$logdir/atlas.log"
+
 # ===============================================================================
 # Optional Extensions to the JEDI Stack
 
