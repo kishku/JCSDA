@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Compiler/MPI combination
-export COMPILER="intel/17.0.1"
-export MPI="impi/17.0.1"
+export COMPILER="intel/19.0.5"
+export MPI="impi/19.0.5"
 source /opt/intel/compilers_and_libraries/linux/bin/compilervars.sh intel64
 export PATH=/usr/local/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
