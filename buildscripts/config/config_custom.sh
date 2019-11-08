@@ -5,11 +5,11 @@
 #export MPI="openmpi/3.1.2"
 #export MPI="mpich/3.2.1"
 
-#export COMPILER="intel/17.0.1"
-#export MPI="impi/17.0.1"
+export COMPILER="intel/17.0.7.259"
+export MPI="impi/17.0.7.259"
 
-export COMPILER="clang/6.0.1"
-export MPI="openmpi/3.1.2"
+#export COMPILER="clang/6.0.1"
+#export MPI="openmpi/3.1.2"
 
 # This tells jedi-stack how you want to build the compiler and mpi modules
 # valid options include:
@@ -22,8 +22,8 @@ export COMPILER_BUILD="native-pkg"
 export MPI_BUILD="from-source"
 
 # Build options
-export PREFIX=/opt/modules 
-export USE_SUDO=Y
+export PREFIX=/discover/nobackup/mmiesch/modules
+export USE_SUDO=N
 export PKGDIR=pkg
 export LOGDIR=buildscripts/log
 export OVERWRITE=Y
@@ -33,10 +33,11 @@ export MAKE_VERBOSE=Y
 export   MAKE_CLEAN=N
 export DOWNLOAD_ONLY=N
 export STACK_EXIT_ON_FAIL=Y
+export WGET="wget -nv"
 
 # Minimal JEDI Stack
 export      STACK_BUILD_CMAKE=N
-export       STACK_BUILD_SZIP=N
+export       STACK_BUILD_SZIP=Y
 export    STACK_BUILD_UDUNITS=N
 export       STACK_BUILD_ZLIB=N
 export     STACK_BUILD_LAPACK=N
@@ -47,12 +48,12 @@ export    STACK_BUILD_PNETCDF=N
 export     STACK_BUILD_NETCDF=N
 export      STACK_BUILD_NCCMP=N
 export        STACK_BUILD_NCO=N
-export    STACK_BUILD_ECBUILD=Y
+export    STACK_BUILD_ECBUILD=N
 export      STACK_BUILD_ECKIT=N
 export      STACK_BUILD_FCKIT=N
 export        STACK_BUILD_ODB=N
-export        STACK_BUILD_ODC=Y
-export    STACK_BUILD_ODYSSEY=Y
+export        STACK_BUILD_ODC=N
+export    STACK_BUILD_ODYSSEY=N
 export    STACK_BUILD_BUFRLIB=N
 
 # Optional Additions
@@ -66,6 +67,6 @@ export        STACK_BUILD_TKDIFF=N
 export          STACK_BOOST_FULL=N
 export          STACK_BUILD_ESMF=N
 export      STACK_BUILD_BASELIBS=N
-export     STACK_BUILD_PDTOOLKIT=Y
+export     STACK_BUILD_PDTOOLKIT=N
 export          STACK_BUILD_TAU2=N
 
