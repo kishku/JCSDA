@@ -100,6 +100,9 @@ $MODULES && (set +x; module purge; set -x)
 [[ $STACK_BUILD_ECBUILD =~ [yYtT] ]] && \
     libs/build_ecbuild.sh "ecmwf" "3.1.0" 2>&1 | tee "$logdir/ecbuild.log"
 
+[[ $STACK_BUILD_CGAL =~ [yYtT] ]] && \
+    libs/build_cgal.sh "5.0" 2>&1 | tee "$logdir/cgal.log"
+
 #----------------------
 # These must be rebuilt for each MPI implementation
 
