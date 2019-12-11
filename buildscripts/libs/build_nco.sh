@@ -23,6 +23,7 @@ if $MODULES; then
     module load jedi-$MPI
     module load szip
     module load hdf5
+    module load pnetcdf
     module load netcdf
     module load udunits
     module list

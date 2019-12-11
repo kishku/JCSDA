@@ -14,9 +14,16 @@ mpi=$(echo $MPI | sed 's/\//-/g')
 if $MODULES; then
     set +x
     source $MODULESHOME/init/bash
-    module load jedi-$COMPILER
-    module load jedi-$MPI
-    module load szip
+#    module load jedi-$COMPILER
+#    module load jedi-$MPI
+#    module load szip
+#    module load hdf5
+#    module load pnetcdf
+#    module list
+    module load license_intel
+    module load jedi-intel/17.0.6
+    module load jedi-impi/17.0.6
+    module load szip zlib
     module load hdf5
     module load pnetcdf
     module list
@@ -103,7 +110,7 @@ export CXXFLAGS+=" -I$prefix/include"
 
 # generate modulefile from template
 [[ -z $mpi ]] && modpath=compiler || modpath=mpi
-$MODULES && update_modules $modpath $name $c_version
+##$MODULES && update_modules $modpath $name $c_version
 
 set +x
 echo "################################################################################"

@@ -17,7 +17,10 @@ if $MODULES; then
     module load jedi-$COMPILER
     module load jedi-$MPI
     module load ecbuild
+    module load hdf5 pnetcdf
     module load netcdf
+    module load eigen
+    module load boost-headers
     module load eckit
     
     module list

@@ -11,16 +11,18 @@ software=${name}_$version
 compiler=$(echo $COMPILER | sed 's/\//-/g')
 mpi=$(echo $MPI | sed 's/\//-/g')
 
-[[ $USE_SUDO =~ [yYtT] ]] && export SUDO="sudo" || unset SUDO
-
 if $MODULES; then
     set +x
     source $MODULESHOME/init/bash
     module load jedi-$COMPILER
     module load szip
     module load jedi-$MPI
-    module load hdf5
-    module load netcdf
+    #module load hdf5
+    #module load pnetcdf
+    #module load netcdf
+    module load hdf/4.2.14
+    module load hdf5/1.8.21
+    module load netcdf4/4.6.2
     module load udunits
     module list
     set -x
@@ -47,18 +49,39 @@ export CFLAGS="-fPIC"
 export CXXFLAGS="-fPIC"
 export FCFLAGS="$FFLAGS"
 
-if [[ ! -z $mpi ]]; then
+#if [[ ! -z $mpi ]]; then
+#
+#    if [[ $(echo $mpi | cut -d- -f1) = "openmpi" ]]; then
+#        export ESMF_COMM="openmpi"
+#    elif [[ $(echo $mpi | cut -d- -f1) = "mpich" ]]; then
+#        export ESMF_COMM="mpich3"
+#    elif [[ $(echo $mpi | cut -d- -f1) = "mpich" ]]; then
+#        export ESMF_COMM="intelmpi"
+#    fi
+#
+#fi
 
-    if [[ $(echo $mpi | cut -d- -f1) = "openmpi" ]]; then
-        export ESMF_COMM="openmpi"
-    elif [[ $(echo $mpi | cut -d- -f1) = "mpich" ]]; then
-        export ESMF_COMM="mpich3"
-    fi
+export ESMF_COMM="intelmpi"
 
+export ESMF_COMPILER=$(echo $compiler | cut -d- -f1)
+
+if [[ $ESMF_COMPILER = "intel" ]]; then
+    export ESMF_F90COMPILEOPTS="-g -traceback -fp-model precise"
+    export ESMF_CXXCOMPILEOPTS="-g -traceback -fp-model precise"
 fi
 
-export ESMF_COMPILER="gfortran"
-export ESMF_NETCDF="nc-config"
+export ESMF_CXXCOMPILER=$MPI_CXX
+export ESMF_CXXLINKER=$MPI_CXX
+export ESMF_F90COMPILER=$MPI_FC
+export ESMF_F90LINKER=$MPI_FC
+export ESMF_NETCDF=nc-config
+export ESMF_BOPT=O
+export ESMF_OPTLEVEL=2
+export ESMF_INSTALL_PREFIX=$prefix
+export ESMF_INSTALL_BINDIR=bin
+export ESMF_INSTALL_LIBDIR=lib
+export ESMF_INSTALL_MODDIR=mod
+export ESMF_ABI=64
 
 gitURL="https://git.code.sf.net/p/esmf/esmf.git"
 
@@ -77,7 +100,7 @@ $SUDO make install
 [[ $MAKE_CHECK =~ [yYtT] ]] && make installcheck
 
 # generate modulefile from template
-[[ -z $mpi ]] && modpath=mpi || modpath=compiler
-$MODULES update_modules $modpath $name $c_version
+[[ -z $mpi ]] && modpath=compiler || modpath=mpi
+$MODULES update_modules $modpath $name $version
 
 exit 0

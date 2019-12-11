@@ -5,11 +5,11 @@
 #export MPI="openmpi/3.1.2"
 #export MPI="mpich/3.2.1"
 
-#export COMPILER="intel/17.0.1"
-#export MPI="impi/17.0.1"
+export COMPILER="intel/17.0.6"
+export MPI="impi/17.0.6"
 
-export COMPILER="clang/6.0.1"
-export MPI="openmpi/3.1.2"
+#export COMPILER="clang/6.0.1"
+#export MPI="openmpi/3.1.2"
 
 # This tells jedi-stack how you want to build the compiler and mpi modules
 # valid options include:
@@ -18,12 +18,12 @@ export MPI="openmpi/3.1.2"
 #             as installed by package managers like apt-get or hombrewo.
 #             This is a common option for, e.g., gcc/g++/gfortrant
 # from-source: This is to build from source
-export COMPILER_BUILD="native-pkg"
-export MPI_BUILD="from-source"
+export COMPILER_BUILD="native-module"
+export MPI_BUILD="native-pkg"
 
 # Build options
-export PREFIX=/opt/modules 
-export USE_SUDO=Y
+export PREFIX=/data/users/mmiesch/modules
+export USE_SUDO=N
 export PKGDIR=pkg
 export LOGDIR=buildscripts/log
 export OVERWRITE=Y
@@ -31,7 +31,7 @@ export NTHREADS=4
 export   MAKE_CHECK=N
 export MAKE_VERBOSE=Y
 export   MAKE_CLEAN=N
-export DOWNLOAD_ONLY=F
+export DOWNLOAD_ONLY=N
 
 # Minimal JEDI Stack
 export      STACK_BUILD_CMAKE=N
@@ -46,8 +46,8 @@ export    STACK_BUILD_PNETCDF=N
 export     STACK_BUILD_NETCDF=N
 export      STACK_BUILD_NCCMP=N
 export        STACK_BUILD_NCO=N
-export    STACK_BUILD_ECBUILD=Y
-export      STACK_BUILD_ECKIT=N
+export    STACK_BUILD_ECBUILD=N
+export      STACK_BUILD_ECKIT=Y
 export      STACK_BUILD_FCKIT=N
 export        STACK_BUILD_ODB=N
 export    STACK_BUILD_BUFRLIB=N

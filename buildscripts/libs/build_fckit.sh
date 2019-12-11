@@ -19,6 +19,9 @@ if $MODULES; then
     source $MODULESHOME/init/bash
     module load jedi-$COMPILER
     module load jedi-$MPI
+    module load boost-headers eigen
+    module load pnetcdf hdf5
+    module load netcdf
     module load ecbuild eckit
     module list
     set -x

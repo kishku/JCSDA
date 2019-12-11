@@ -12,8 +12,12 @@ mpi=$(echo $MPI | sed 's/\//-/g')
 if $MODULES; then
     set +x
     source $MODULESHOME/init/bash
-    module load jedi-$COMPILER
-    module load jedi-$MPI
+#    module load jedi-$COMPILER
+#    module load jedi-$MPI  
+    module load license_intel
+    module load jedi-intel/17.0.6
+    module load jedi-impi/17.0.6
+    module load szip zlib
     module list
     set -x
 

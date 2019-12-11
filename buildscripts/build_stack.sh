@@ -92,13 +92,13 @@ $MODULES && (set +x; module purge; set -x)
 
 # The first argument is the source, either "ecmwf" or "jcsda" (fork)
 [[ $STACK_BUILD_ECBUILD =~ [yYtT] ]] && \
-    libs/build_ecbuild.sh "jcsda" "release/stable" 2>&1 | tee "$logdir/ecbuild.log"
+    libs/build_ecbuild.sh "jcsda" "bugfix/old-linker" 2>&1 | tee "$logdir/ecbuild.log"
 
 #----------------------
 # These must be rebuilt for each MPI implementation
 
 [[ $STACK_BUILD_HDF5  =~ [yYtT] ]] && \
-    libs/build_hdf5.sh "1.10.5" 2>&1 | tee "$logdir/hdf5.log"
+    libs/build_hdf5.sh "1.8.21" 2>&1 | tee "$logdir/hdf5.log"
 
 [[ $STACK_BUILD_PNETCDF =~ [yYtT] ]] && \
     libs/build_pnetcdf.sh "1.11.2" 2>&1 | tee "$logdir/pnetcdf.log"
@@ -108,14 +108,14 @@ $MODULES && (set +x; module purge; set -x)
     libs/build_netcdf.sh "4.7.0" "4.4.5" "4.3.0" 2>&1 | tee "$logdir/netcdf.log"
 
 [[ $STACK_BUILD_ECKIT =~ [yYtT] ]] && \
-    libs/build_eckit.sh "1.1.0" 2>&1 | tee "$logdir/eckit.log"
+    libs/build_eckit.sh "jcsda" "1.4.0.jcsda1" 2>&1 | tee "$logdir/eckit.log"
 
 # The first argument is the source, either "ecmwf" or "jcsda" (fork)
 [[ $STACK_BUILD_FCKIT =~ [yYtT] ]] && \
     libs/build_fckit.sh "jcsda" "develop" 2>&1 | tee "$logdir/fckit.log"
 
 [[ $STACK_BUILD_ODB      =~ [yYtT] ]] && \
-    libs/build_odb.sh "0.18.1" 2>&1 | tee "$logdir/odb.log"
+    libs/build_odb.sh "0.18.1.r2" 2>&1 | tee "$logdir/odb.log"
 
 # ===============================================================================
 # Optional Extensions to the JEDI Stack
@@ -158,7 +158,7 @@ $MODULES && (set +x; module purge; set -x)
     libs/build_boost.sh "1.68.0" 2>&1 | tee "$logdir/boost.log"
 
 [[ $STACK_BUILD_ESMF     =~ [yYtT] ]] && \
-    libs/build_esmf "7_1_0r" 2>&1 | tee "$logdir/esmf.log"
+    libs/build_esmf.sh "7_1_0r" 2>&1 | tee "$logdir/esmf.log"
 
 [[ $STACK_BUILD_BASELIBS =~ [yYtT] ]] && \
     libs/build_baselibs.sh "5.2.2" 2>&1 | tee "$logdir/baselibs.log"
