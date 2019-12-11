@@ -47,9 +47,11 @@ export     STACK_BUILD_NETCDF=N
 export      STACK_BUILD_NCCMP=N
 export        STACK_BUILD_NCO=N
 export    STACK_BUILD_ECBUILD=N
-export      STACK_BUILD_ECKIT=Y
+export      STACK_BUILD_ECKIT=N
 export      STACK_BUILD_FCKIT=N
 export        STACK_BUILD_ODB=N
+export        STACK_BUILD_ODC=Y
+export    STACK_BUILD_ODYSSEY=N
 export    STACK_BUILD_BUFRLIB=N
 
 # Optional Additions
