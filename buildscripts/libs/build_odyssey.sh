@@ -17,9 +17,14 @@ mpi=$(echo $MPI | sed 's/\//-/g')
 if $MODULES; then
     set +x
     source $MODULESHOME/init/bash
+    module load miniconda
     module load jedi-$COMPILER
     module load jedi-$MPI
+    module load netcdf
+    module load eigen
+    module load boost-headers
     module load ecbuild
+    module load eckit
     module load odc
     module list
     set -x
