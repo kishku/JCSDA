@@ -118,7 +118,7 @@ $MODULES && (set +x; module purge; set -x)
 
 # The first argument is the source, either "ecmwf" or "jcsda" (fork)
 [[ $STACK_BUILD_ECKIT =~ [yYtT] ]] && \
-    libs/build_eckit.sh "jcsda" "1.4.0.jcsda1" 2>&1 | tee "$logdir/eckit.log"
+    libs/build_eckit.sh "jcsda" "1.4.0.jcsda2" 2>&1 | tee "$logdir/eckit.log"
 
 # The first argument is the source, either "ecmwf" or "jcsda" (fork)
 [[ $STACK_BUILD_FCKIT =~ [yYtT] ]] && \
