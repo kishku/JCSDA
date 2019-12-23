@@ -9,23 +9,21 @@ name="pyjedi"
 [[ $USE_SUDO =~ [yYtT] ]] || ! $MODULES && prefix=${PYJEDI_ROOT:-"/usr/local"} \
 	                  || prefix="$HOME/.local"
 
+[[ $USE_SUDO =~ [yYtT] ]] && unset LOCALPY || LOCALPY="--user"
+
 #####################################################################
 # Python Package installs
 #####################################################################
 
-$SUDO python -m pip install -U pip setuptools
-$SUDO python -m pip install -U numpy
-$SUDO python -m pip install -U wheel netCDF4 matplotlib
-
-$SUDO python3 -m pip install -U pip setuptools
-$SUDO python3 -m pip install -U numpy
-$SUDO python3 -m pip install -U wheel netCDF4 matplotlib
-$SUDO python3 -m pip install -U pandas
-$SUDO python3 -m pip install -U pycodestyle
-$SUDO python3 -m pip install -U autopep8
-$SUDO python3 -m pip install -U cffi
-$SUDO python3 -m pip install -U pycparser
-$SUDO python3 -m pip install -U pytest
+$SUDO python3 -m pip install $LOCALPY -U pip setuptools
+$SUDO python3 -m pip install $LOCALPY -U numpy
+$SUDO python3 -m pip install $LOCALPY -U wheel netCDF4 matplotlib
+$SUDO python3 -m pip install $LOCALPY -U pandas
+$SUDO python3 -m pip install $LOCALPY -U pycodestyle
+$SUDO python3 -m pip install $LOCALPY -U autopep8
+$SUDO python3 -m pip install $LOCALPY -U cffi
+$SUDO python3 -m pip install $LOCALPY -U pycparser
+$SUDO python3 -m pip install $LOCALPY -U pytest
 
 #####################################################################
 # ncepbufr for python
@@ -34,9 +32,6 @@ $SUDO python3 -m pip install -U pytest
 cd ${JEDI_STACK_ROOT}/${PKGDIR:-"pkg"}
 git clone https://github.com/JCSDA/py-ncepbufr.git 
 cd py-ncepbufr 
-
-CC=gcc python setup.py build 
-$SUDO python setup.py install 
 
 CC=gcc python3 setup.py build 
 $SUDO python3 setup.py install 
