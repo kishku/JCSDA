@@ -9,7 +9,7 @@ name="pyjedi"
 [[ $USE_SUDO =~ [yYtT] ]] || ! $MODULES && prefix=${PYJEDI_ROOT:-"/usr/local"} \
 	                  || prefix="$HOME/.local"
 
-[[ $USE_SUDO =~ [yYtT] ]] || $MODULES && unset LOCALPY || LOCALPY="--user"
+[[ $USE_SUDO =~ [yYtT] ]] || ! $MODULES && unset LOCALPY || LOCALPY="--user"
 
 #####################################################################
 # Python Package installs
