@@ -1,0 +1,21 @@
+#%Module######################################################################
+##
+##      boost headers
+##
+proc ModulesHelp { } {
+        puts stderr "Load boost headers"
+}
+
+set name boost
+set ver 1.68.0
+set base /discover/nobackup/mmiesch/modules/core/$name/$ver
+
+prepend-path "CPATH" $base/include
+
+setenv  "BOOST_ROOT"  $base
+setenv  "BOOST_VERSION" $ver
+setenv  "Boost_INCLUDE_DIR" $base/include
+
+unset base
+unset name
+unset ver

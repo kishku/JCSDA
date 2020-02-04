@@ -1,0 +1,18 @@
+#%Module######################################################################
+##
+##      ecbuild
+##
+proc ModulesHelp { } {
+        puts stderr "Load ecbuild"
+}
+
+
+set name ecbuild
+set ver ecmwf-develop
+set base /discover/nobackup/mmiesch/modules/core/$name/$ver
+
+module load other/cmake
+
+prepend-path "PATH" $base/bin
+
+setenv "ECBUILD_PATH" $base

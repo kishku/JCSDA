@@ -14,7 +14,8 @@ mpi=$(echo $MPI | sed 's/\//-/g')
 if $MODULES; then
     set +x
     source $MODULESHOME/init/bash
-    module load jedi-$COMPILER
+    module load other/cmake
+    module load core/jedi-$COMPILER
     module load jedi-$MPI
     module load szip
     module load hdf5
@@ -103,8 +104,8 @@ export CXXFLAGS+=" -I$prefix/include"
 
 # generate modulefile from template
 [[ -z $mpi ]] && modpath=compiler || modpath=mpi
-$MODULES && update_modules $modpath $name $c_version \
-	 || echo $software >> ${JEDI_STACK_ROOT}/jedi-stack-contents.log
+#$MODULES && update_modules $modpath $name $c_version \
+# || echo $software >> ${JEDI_STACK_ROOT}/jedi-stack-contents.log
 
 set +x
 echo "################################################################################"

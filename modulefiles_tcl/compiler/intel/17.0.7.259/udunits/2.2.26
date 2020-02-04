@@ -1,0 +1,29 @@
+#%Module######################################################################
+##
+##      udunits2
+##
+proc ModulesHelp { } {
+        puts stderr "Load udunits2"
+}
+
+set comp intel-17.0.7.259
+set name udunits
+set ver 2.2.26
+set base /discover/nobackup/mmiesch/modules/$comp/$name/$ver
+
+prepend-path PATH $base/bin
+prepend-path LD_LIBRARY_PATH $base/lib
+prepend-path CPATH $base/include
+prepend-path MANPATH $base/share/man
+
+setenv "UDUNITS2_ROOT"  $base
+setenv "UDUNITS2_PATH"  $base
+setenv "UDUNITS2_INCLUDES"  $base/include
+setenv "UDUNITS2_LIBRARIES" $base/lib 
+setenv "UDUNITS2_VERSION"  $ver
+
+unset comp
+unset name
+unset ver
+unset base
+

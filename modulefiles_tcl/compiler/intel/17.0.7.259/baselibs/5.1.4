@@ -1,0 +1,45 @@
+#%Module######################################################################
+##
+##      ESMA-Baselibs
+##
+proc ModulesHelp { } {
+        puts stderr "Load ESMA-Baselibs"
+}
+
+set comp ifort_17.0.7.259
+set mpi intelmpi_17.0.7.259
+
+set ver 5.1.4
+set name ESMA-Baselibs
+set base /discover/swdev/mathomp4/Baselibs
+
+set path $base/$name-$ver/x86_64-unknown-linux-gnu/$comp-$mpi/Linux
+
+module load other/comp/gcc-6.3
+module load comp/intel-17.0.7.259
+module load mpi/impi-17.0.7.259
+module load lib/mkl-17.0.7.259
+
+prepend-path PATH $path/bin
+prepend-path CPATH $path/include
+prepend-path LD_LIBRARY_PATH $path/lib
+
+setenv BASELIBDIR $path
+setenv BASEDIR $path
+
+setenv JPEG_LIBRARY $path
+setenv CURL_DIR $path
+setenv HDF4_ROOT $path
+setenv HDF5_ROOT $path
+setenv NETCDF_ROOT $path
+setenv NETCDF_INCLUDE_DIRS $path/include/netcdf
+setenv NETCDF_LIBRARIES "$path/lib/libnetcdf.a;$path/lib/libnetcdff.a;$path/lib/libhdf5_hl.a;$path/lib/libhdf5.a;$path/lib/libcurl.a;/usr/lib64/libcrypto.so;/usr/lib64/libssl.so;$path/lib/libmfhdf.a;$path/lib/libdf.a;$path/lib/libjpeg.a"
+
+unset comp
+unset mpi
+
+unset base
+unset name
+unset ver
+
+unset path

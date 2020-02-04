@@ -7,6 +7,9 @@ name="odc"
 source=$1
 version=$2
 
+# build with baselibs?
+baselibs=true
+
 # Hyphenated version used for install prefix
 compiler=$(echo $COMPILER | sed 's/\//-/g')
 mpi=$(echo $MPI | sed 's/\//-/g')
@@ -17,15 +20,24 @@ mpi=$(echo $MPI | sed 's/\//-/g')
 if $MODULES; then
     set +x
     source $MODULESHOME/init/bash
-    module load jedi-$COMPILER
-    module load jedi-$MPI
-    module load ecbuild
-    module load netcdf
-    module load eckit
-    module list
-    set -x
+    if [[ $baselibs ]]; then
+       [[ compilerName = "gnu" ]] && \
+          module load apps/jedi/gcc-7.3_openmpi-3.0.0-baselibs || \
+          module load apps/jedi/intel-17.0.7.259-baselibs
+       prefix="${PREFIX:-"/opt/modules"}/$compiler/$mpi/$name/$source-$version-baselibs"
+    else
+       module load core/jedi-$COMPILER
+       module load jedi-$MPI
+       module load core/ecbuild/jcsda-bugfix-old-linker
+       module load netcdf/4.7.0
+       module load eckit/jcsda-1.4.0.jcsda3
+       prefix="${PREFIX:-"/opt/modules"}/$compiler/$mpi/$name/$source-$version"
+    fi
 
-    prefix="${PREFIX:-"/opt/modules"}/$compiler/$mpi/$name/$source-$version"
+    module load other/cmake
+    module list
+
+    set -x
     if [[ -d $prefix ]]; then
 	[[ $OVERWRITE =~ [yYtT] ]] && ( echo "WARNING: $prefix EXISTS: OVERWRITING!";$SUDO rm -rf $prefix ) \
                                    || ( echo "WARNING: $prefix EXISTS, SKIPPING"; exit 1 )
@@ -56,7 +68,7 @@ make -j${NTHREADS:-4}
 $SUDO make $verb install
 
 # generate modulefile from template
-$MODULES && update_modules mpi $name $source-$version \
-         || echo $name $source-$version >> ${JEDI_STACK_ROOT}/jedi-stack-contents.log
+#$MODULES && update_modules mpi $name $source-$version \
+#         || echo $name $source-$version >> ${JEDI_STACK_ROOT}/jedi-stack-contents.log
 
 exit 0

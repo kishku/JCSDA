@@ -11,7 +11,7 @@ compiler=$(echo $COMPILER | sed 's/\//-/g')
 if $MODULES; then
     set +x
     source $MODULESHOME/init/bash
-    module load jedi-$COMPILER
+    module load core/jedi-$COMPILER
     module list
     set -x
     prefix="${PREFIX:-"/opt/modules"}/$compiler/$name/$version"
@@ -41,14 +41,14 @@ url=http://www.zlib.net/$software.tar.gz
 [[ -d build ]] && rm -rf build
 mkdir -p build && cd build
 
-../configure --prefix=$prefix
+../configure --static --prefix=$prefix
 
 make -j${NTHREADS:-4}
 [[ "$CHECK" = "YES" ]] && make check
 $SUDO make install
 
 # generate modulefile from template
-$MODULES && update_modules compiler $name $version \
-	 || echo $name $version >> ${JEDI_STACK_ROOT}/jedi-stack-contents.log
+#$MODULES && update_modules compiler $name $version \
+#	 || echo $name $version >> ${JEDI_STACK_ROOT}/jedi-stack-contents.log
 
 exit 0

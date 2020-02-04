@@ -24,7 +24,10 @@ function update_modules {
 
     [[ -e $tmpl_file ]] || ( echo "ERROR: $tmpl_file NOT FOUND!  ABORT!"; exit 1 )
 
-    [[ -d $to_dir ]] || ( echo "ERROR: $mod_dir MODULE DIRECTORY NOT FOUND!  ABORT!"; exit 1 )
+    # For discover, write the modulfile manually if the directory already exists
+    #[[ -d $to_dir ]] || ( echo "ERROR: $mod_dir MODULE DIRECTORY NOT FOUND!  ABORT!"; exit 1 )
+    #[[ -d $to_dir/$2 ]] && ( echo "Modulefile directory already exists"; exit 0 )
+    exit 0
 
     cd $to_dir
     $SUDO mkdir -p $2; cd $2

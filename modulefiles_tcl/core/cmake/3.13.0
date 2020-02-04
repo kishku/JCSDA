@@ -1,0 +1,16 @@
+#%Module######################################################################
+##
+##      cmake
+##
+proc ModulesHelp { } {
+        puts stderr "Load cmake"
+}
+
+
+set name cmake
+set ver 3.13.0
+set base /discover/nobackup/mmiesch/modules/core/$name/$ver
+
+prepend-path "PATH" $base/bin
+
+setenv "CMAKE_PATH" $base

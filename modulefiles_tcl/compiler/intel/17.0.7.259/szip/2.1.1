@@ -1,0 +1,27 @@
+#%Module######################################################################
+##
+##      szip
+##
+proc ModulesHelp { } {
+        puts stderr "Load szip"
+}
+
+set comp intel-17.0.7.259
+set name szip
+set ver 2.1.1
+set base /discover/nobackup/mmiesch/modules/$comp/$name/$ver
+
+prepend-path LD_LIBRARY_PATH $base/lib
+prepend-path CPATH $base/include
+prepend-path MANPATH $base/share/man
+
+setenv "SZIP_ROOT"  $base
+setenv "SZIP_INCLUDES"  $base/include
+setenv "SZIP_LIBRARIES" $base/lib 
+setenv "SZIP_VERSION"  $ver
+
+unset comp
+unset name
+unset ver
+unset base
+

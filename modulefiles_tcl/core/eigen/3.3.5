@@ -1,0 +1,19 @@
+#%Module######################################################################
+##
+##      Eigen 3
+##
+proc ModulesHelp { } {
+        puts stderr "Load Eigen 3"
+}
+
+set name eigen
+set ver 3.3.5
+set base /discover/nobackup/mmiesch/modules/core/$name/$ver
+
+prepend-path "CPATH" $base/include
+prepend-path "MANPATH" $base/share/man
+
+setenv "EIGEN_ROOT"  $base
+setenv "EIGEN3_PATH" $base
+setenv "EIGEN_VERSION" $ver
+

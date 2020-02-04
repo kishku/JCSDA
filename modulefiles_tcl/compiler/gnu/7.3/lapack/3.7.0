@@ -1,0 +1,28 @@
+#%Module######################################################################
+##
+##      lapack
+##
+proc ModulesHelp { } {
+        puts stderr "Load lapack"
+}
+
+set comp gnu-7.3
+set name lapack
+set ver 3.7.0
+set base /discover/nobackup/mmiesch/modules/$comp/$name/$ver
+
+prepend-path LD_LIBRARY_PATH $base/lib
+prepend-path LIBRARY_PATH $base/lib
+
+setenv "LAPACK_ROOT"  $base
+setenv "LAPACK_PATH"  $base
+setenv "LAPACK_DIR"  $base
+setenv "LAPACK_INCLUDES"  $base/include
+setenv "LAPACK_LIBRARIES" $base/lib 
+setenv "LAPACK_VERSION"  $ver
+
+unset comp
+unset name
+unset ver
+unset base
+

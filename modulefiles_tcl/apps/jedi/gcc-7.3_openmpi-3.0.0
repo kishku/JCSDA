@@ -1,0 +1,48 @@
+#%Module######################################################################
+##
+##      JEDI stack with gnu 7.3 and openmpi
+##
+proc ModulesHelp { } {
+        puts stderr "Load jedi stack with gnu 7.3 and openmpi"
+}
+
+module load other/cmake
+module load other/wget
+module load other/git
+module load other/anaconda3/2019.03
+
+module load core/jedi-gnu
+module load core/git-lfs/2.9.0
+module load core/boost-headers/1.68.0
+module load core/eigen/3.3.5
+module load jedi-openmpi
+
+module load szip/2.1.1
+module load zlib/1.2.11
+module load udunits/2.2.26
+module load hdf5/1.10.5
+module load pnetcdf/1.11.2
+module load netcdf/4.7.0
+module load nccmp/1.8.2.1
+
+module load core/ecbuild/jcsda-bugfix-old-linker
+module load eckit/jcsda-1.4.0.jcsda3
+module load odc/jcsda-develop
+
+# Set compilers to use MPI wrappers
+set tmp1 default_str
+
+set tmp $tmp1
+catch {set tmp [ exec which mpicc ]}
+setenv CC $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpicxx ]}
+setenv CXX $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpifort ]}
+setenv F90 $tmp
+setenv FC  $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpirun ]}
+setenv MPIEXEC $tmp
+

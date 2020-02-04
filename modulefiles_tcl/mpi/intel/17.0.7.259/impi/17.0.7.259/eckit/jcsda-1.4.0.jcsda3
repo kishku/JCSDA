@@ -1,0 +1,31 @@
+#%Module######################################################################
+##
+##    eckit     
+##
+proc ModulesHelp { } {
+        puts stderr "Load eckit"
+}
+
+set comp intel-17.0.7.259
+set mpi impi-17.0.7.259
+set name eckit
+set ver jcsda-1.4.0.jcsda3
+set base /discover/nobackup/mmiesch/modules/$comp/$mpi/$name/$ver
+
+prereq netcdf
+prereq core/ecbuild
+
+prepend-path "PATH" $base/bin 
+prepend-path "LD_LIBRARY_PATH" $base/lib
+prepend-path "CPATH" $base/include
+prepend-path "MANPATH" $base/share/man
+
+setenv "ECKIT_PATH"  $base
+setenv "ECKIT_VERSION" $ver
+
+unset comp
+unset mpi
+unset name
+unset ver
+unset base
+

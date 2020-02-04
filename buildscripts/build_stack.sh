@@ -25,6 +25,9 @@ source libs/update_modules.sh
 # create build directory if needed
 mkdir -p ${JEDI_STACK_ROOT}/${PKGDIR:-"pkg"}
 
+# be sure to load our own cmake module
+module load cmake/3.13.0
+
 # ===============================================================================
 # configure build
 
@@ -98,7 +101,7 @@ $MODULES && (set +x; module purge; set -x)
 
 # The first argument is the source, either "ecmwf" or "jcsda" (fork)
 [[ $STACK_BUILD_ECBUILD =~ [yYtT] ]] && \
-    libs/build_ecbuild.sh "ecmwf" "3.1.0" 2>&1 | tee "$logdir/ecbuild.log"
+    libs/build_ecbuild.sh "jcsda" "bugfix/old-linker" 2>&1 | tee "$logdir/ecbuild.log"
 
 #----------------------
 # These must be rebuilt for each MPI implementation
@@ -118,7 +121,7 @@ $MODULES && (set +x; module purge; set -x)
 
 # The first argument is the source, either "ecmwf" or "jcsda" (fork)
 [[ $STACK_BUILD_ECKIT =~ [yYtT] ]] && \
-    libs/build_eckit.sh "jcsda" "1.4.0.jcsda1" 2>&1 | tee "$logdir/eckit.log"
+    libs/build_eckit.sh "jcsda" "1.4.0.jcsda3" 2>&1 | tee "$logdir/eckit.log"
 
 # The first argument is the source, either "ecmwf" or "jcsda" (fork)
 [[ $STACK_BUILD_FCKIT =~ [yYtT] ]] && \

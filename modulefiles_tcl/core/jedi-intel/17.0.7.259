@@ -1,0 +1,35 @@
+#%Module######################################################################
+##
+##      Intel compiler suite
+##
+proc ModulesHelp { } {
+        puts stderr "Load Intel compiler and mkl"
+}
+
+set base /discover/nobackup/mmiesch/modules
+set name intel
+set ver 17.0.7.259
+
+module		 load other/comp/gcc-6.3
+module		 load comp/intel-17.0.7.259
+module		 load mpi/impi-17.0.7.259
+module		 load lib/mkl-17.0.7.259
+
+prepend-path MODULEPATH $base/modulefiles/compiler/$name/$ver
+
+setenv "FC"   "ifort"
+setenv "CC"   "icc"
+setenv "CXX"  "icpc"
+setenv "SERIAL_FC"   "ifort"
+setenv "SERIAL_CC"   "icc"
+setenv "SERIAL_CXX"  "icpc"
+
+setenv "CFLAGS" "-mkl"
+setenv "CXXFLAGS" "-mkl"
+setenv "CPPFLAGS" "-mkl"
+setenv "FCFLAGS" "-mkl"
+setenv "FFLAGS" "-mkl"
+
+unset base
+unset name
+unset ver

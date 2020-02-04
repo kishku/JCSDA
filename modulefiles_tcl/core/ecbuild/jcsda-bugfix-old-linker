@@ -1,0 +1,20 @@
+#%Module######################################################################
+##
+##      ecbuild
+##
+proc ModulesHelp { } {
+        puts stderr "Load ecbuild"
+}
+
+
+set name ecbuild
+set ver jcsda-bugfix-old-linker
+set base /discover/nobackup/mmiesch/modules/core/$name/$ver
+
+#prereq cmake
+
+module load other/cmake
+
+prepend-path "PATH" $base/bin
+
+setenv "ECBUILD_PATH" $base

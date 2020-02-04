@@ -1,0 +1,16 @@
+#%Module######################################################################
+##
+##      git-lfs
+##
+proc ModulesHelp { } {
+        puts stderr "Load git-lfs"
+}
+
+
+set name git-lfs
+set ver 2.9.0
+set base /discover/nobackup/mmiesch/modules/core/$name/$ver
+
+prepend-path "PATH" $base/bin
+
+setenv "GITLFS_PATH" $base

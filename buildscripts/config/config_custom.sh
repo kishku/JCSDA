@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Compiler/MPI combination
-#export COMPILER="gnu/7.4.0"
-#export MPI="openmpi/3.1.2"
+#export COMPILER="gnu/7.3"
+#export MPI="openmpi/3.0.0"
 #export MPI="mpich/3.2.1"
 
 export COMPILER="intel/17.0.7.259"
@@ -19,14 +19,14 @@ export MPI="impi/17.0.7.259"
 #             This is a common option for, e.g., gcc/g++/gfortrant
 # from-source: This is to build from source
 export COMPILER_BUILD="native-pkg"
-export MPI_BUILD="from-source"
+export MPI_BUILD="native-pkg"
 
 # Build options
 export PREFIX=/discover/nobackup/mmiesch/modules
 export USE_SUDO=N
 export PKGDIR=pkg
 export LOGDIR=buildscripts/log
-export OVERWRITE=Y
+export OVERWRITE=N
 export NTHREADS=4
 export   MAKE_CHECK=N
 export MAKE_VERBOSE=Y
@@ -37,7 +37,7 @@ export WGET="wget -nv"
 
 # Minimal JEDI Stack
 export      STACK_BUILD_CMAKE=N
-export       STACK_BUILD_SZIP=Y
+export       STACK_BUILD_SZIP=N
 export    STACK_BUILD_UDUNITS=N
 export       STACK_BUILD_ZLIB=N
 export     STACK_BUILD_LAPACK=N
@@ -49,7 +49,7 @@ export     STACK_BUILD_NETCDF=N
 export      STACK_BUILD_NCCMP=N
 export        STACK_BUILD_NCO=N
 export    STACK_BUILD_ECBUILD=N
-export      STACK_BUILD_ECKIT=N
+export      STACK_BUILD_ECKIT=Y
 export      STACK_BUILD_FCKIT=N
 export        STACK_BUILD_ODB=N
 export        STACK_BUILD_ODC=N

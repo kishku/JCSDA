@@ -9,7 +9,8 @@ dash_version=$(echo -n $version | sed -e "s@/@-@g")
 
 if $MODULES; then
 
-    module try-load cmake
+    module load jedi-$COMPILER
+    module load other/cmake
 
     prefix="${PREFIX:-"/opt/modules"}/core/$name/$source-$dash_version"
     if [[ -d $prefix ]]; then
@@ -22,7 +23,7 @@ fi
 
 software=ecbuild
 cd ${JEDI_STACK_ROOT}/${PKGDIR:-"pkg"}
-[[ -d $software ]] && [[ $OVERWRITE =~ [yYtT] ]] && ( echo "WARNING: $software EXISTS: OVERWRITING!";$SUDO rm -rf $software )
+#[[ -d $software ]] && [[ $OVERWRITE =~ [yYtT] ]] && ( echo "WARNING: $software EXISTS: OVERWRITING!";$SUDO rm -rf $software )
 [[ -d $software ]] || git clone https://github.com/$source/$software.git
 [[ ${DOWNLOAD_ONLY} =~ [yYtT] ]] && exit 0
 [[ -d $software ]] && cd $software || ( echo "$software does not exist, ABORT!"; exit 1 )

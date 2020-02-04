@@ -1,0 +1,52 @@
+#%Module######################################################################
+##
+##      JEDI
+##
+proc ModulesHelp { } {
+        puts stderr "Load JEDI"
+}
+
+# What compiler are we loading JEDI components for?
+set comp intel/17.0.7.259
+
+# Load Git
+#module load other/git-2.11.0
+module load other/git-lfs
+
+# Load CMake
+module load other/cmake
+
+# Load ecbuild
+module load core/ecbuild/jcsda-bugfix-old-linker
+
+# Load Eigen and Boost
+module load core/eigen/3.3.5
+module load core/boost-headers/1.68.0
+
+# Load Baselibs [Also loads compilers]
+module load compiler/intel/17.0.7.259/baselibs/5.1.4
+
+# Load eckit and fckit
+#module load mpi/$comp/impi/17.0.7.259/eckit/jcsda-1.4.0.jcsda3-baselibs
+#module load mpi/$comp/impi/17.0.7.259/fckit/jcsda-develop-baselibs
+
+# Set compilers to use MPI wrappers
+set tmp1 default_str
+
+set tmp $tmp1
+catch {set tmp [ exec which mpiicc ]}
+setenv CC $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpiicpc ]}
+setenv CXX $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpiifort ]}
+setenv F90 $tmp
+setenv FC  $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpirun ]}
+setenv MPIEXEC $tmp
+
+unset comp
+unset tmp
+unset tmp1

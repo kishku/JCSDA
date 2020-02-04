@@ -1,0 +1,23 @@
+#%Module######################################################################
+##
+##      Intel mpi
+##
+proc ModulesHelp { } {
+        puts stderr "set up intel mpi module paths"
+}
+
+set base /discover/nobackup/mmiesch/modules
+set name impi
+set ver 17.0.7.259
+
+prereq core/jedi-intel/$ver
+
+prepend-path MODULEPATH $base/modulefiles/mpi/intel/$ver/$name/$ver
+
+setenv "MPI_FC"   "mpiifort"
+setenv "MPI_CC"   "mpiicc"
+setenv "MPI_CXX"  "mpiicpc"
+
+unset base
+unset name
+unset ver

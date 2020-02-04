@@ -1,0 +1,32 @@
+#%Module######################################################################
+##
+##      PNETCDF
+##
+proc ModulesHelp { } {
+        puts stderr "Load PNETCDF"
+}
+
+set comp intel-17.0.7.259
+set mpi impi-17.0.7.259
+set name pnetcdf
+set ver 1.11.2
+set base /discover/nobackup/mmiesch/modules/$comp/$mpi/$name/$ver
+
+prepend-path "PATH" $base/bin 
+prepend-path "LD_LIBRARY_PATH" $base/lib
+prepend-path "LIBRARY_PATH" $base/lib
+prepend-path "CPATH" $base/include
+prepend-path "MANPATH" $base/share/man
+
+setenv "PNETCDF" $base
+setenv "PNETCDF_ROOT" $base
+setenv "PNETCDF_INCLUDES" $base/include 
+setenv "PNETCDF_LIBRARIES" $base/lib
+setenv "PNETCDF_VERSION" $ver
+
+unset comp
+unset mpi
+unset name
+unset ver
+unset base
+

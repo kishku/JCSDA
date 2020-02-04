@@ -7,26 +7,43 @@ name="eckit"
 source=$1
 version=$2
 
+# build with baselibs?
+baselibs=true
+
 # Hyphenated version used for install prefix
 compiler=$(echo $COMPILER | sed 's/\//-/g')
 mpi=$(echo $MPI | sed 's/\//-/g')
+
+compilerName=$(echo $COMPILER | cut -d/ -f1)
 
 [[ $MAKE_VERBOSE =~ [yYtT] ]] && verb="VERBOSE=1" || unset verb
 
 if $MODULES; then
     set +x
     source $MODULESHOME/init/bash
-    module load jedi-$COMPILER
-    module load jedi-$MPI
-    module try-load cmake
-    module load zlib udunits
-    module load netcdf
-    module load boost-headers eigen
-    module load ecbuild
-    module list
+    if [[ $baselibs ]]; then 
+       [[ compilerName = "gnu" ]] && \
+          echo yes $compilerName || \
+          echo no $compilerName
+       [[ compilerName = "gnu" ]] && \
+          module load apps/jedi/gcc-7.3_openmpi-3.0.0-baselibs || \
+          module load apps/jedi/intel-17.0.7.259-baselibs
+       prefix="${PREFIX:-"/opt/modules"}/$compiler/$mpi/$name/$source-$version-baselibs"
+    else
+       module load core/jedi-$COMPILER
+       module load jedi-$MPI
+       module load zlib udunits
+       module load pnetcdf/1.11.2
+       module load netcdf/4.7.0
+       module load core/boost-headers core/eigen
+       module load core/ecbuild/jcsda-bugfix-old-linker
+       prefix="${PREFIX:-"/opt/modules"}/$compiler/$mpi/$name/$source-$version"
+    fi
+    module load other/cmake
     set -x
 
-    prefix="${PREFIX:-"/opt/modules"}/$compiler/$mpi/$name/$source-$version"
+    module list
+
     if [[ -d $prefix ]]; then
 	[[ $OVERWRITE =~ [yYtT] ]] && ( echo "WARNING: $prefix EXISTS: OVERWRITING!";$SUDO rm -rf $prefix ) \
                                    || ( echo "WARNING: $prefix EXISTS, SKIPPING"; exit 1 )
@@ -56,7 +73,7 @@ make $verb -j${NTHREADS:-4}
 $SUDO make install
 
 # generate modulefile from template
-$MODULES && update_modules mpi $name $source-$version \
-	 || echo $name $source-$version >> ${JEDI_STACK_ROOT}/jedi-stack-contents.log
+#$MODULES && update_modules mpi $name $source-$version \
+#	 || echo $name $source-$version >> ${JEDI_STACK_ROOT}/jedi-stack-contents.log
 
 exit 0

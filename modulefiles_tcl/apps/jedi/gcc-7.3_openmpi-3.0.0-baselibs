@@ -1,0 +1,56 @@
+#%Module######################################################################
+##
+##      JEDI with baselibs
+##
+proc ModulesHelp { } {
+        puts stderr "Load JEDI with baselibs"
+}
+
+# What compiler are we loading JEDI components for?
+set comp gnu/7.3
+
+# Load Git [with LFS]
+#module load other/git-2.11.0
+module load other/git-lfs
+
+# Load CMake
+module load other/cmake
+
+# a few other tools
+module load other/wget
+module load other/anaconda3/2019.03
+
+# Load ecbuild
+module load core/ecbuild/jcsda-bugfix-old-linker
+
+# Load Eigen and Boost
+module load core/eigen/3.3.5
+module load core/boost-headers/1.68.0
+
+# Load Baselibs [Also loads commpilers]
+module load compiler/$comp/baselibs/5.1.2_openmpi-3.0.0
+
+# Load eckit and fckit
+module load mpi/$comp/openmpi/3.0.0/eckit/jcsda-1.4.0.jcsda3-baselibs
+#module load mpi/$comp/openmpi/3.0.0/fckit/jcsda-develop-baselibs
+
+# Set compilers to use MPI wrappers
+set tmp1 default_str
+
+set tmp $tmp1
+catch {set tmp [ exec which mpicc ]}
+setenv CC $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpicxx ]}
+setenv CXX $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpifort ]}
+setenv F90 $tmp
+setenv FC  $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpirun ]}
+setenv MPIEXEC $tmp
+
+unset comp
+unset tmp
+unset tmp1

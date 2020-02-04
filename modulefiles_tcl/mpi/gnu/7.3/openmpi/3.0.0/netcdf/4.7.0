@@ -1,0 +1,36 @@
+#%Module######################################################################
+##
+##     NetCDF
+##
+proc ModulesHelp { } {
+        puts stderr "Load NetCDF"
+}
+
+
+set comp gnu-7.3
+set mpi openmpi-3.0.0
+set name netcdf
+set ver 4.7.0
+set base /discover/nobackup/mmiesch/modules/$comp/$mpi/$name/$ver
+
+#prereq hdf5
+
+prepend-path "PATH" $base/bin 
+prepend-path "LD_LIBRARY_PATH" $base/lib
+prepend-path "LIBRARY_PATH" $base/lib
+prepend-path "CPATH" $base/include
+prepend-path "MANPATH" $base/share/man
+
+setenv "NETCDF"  $base
+setenv "NETCDF_ROOT"  $base
+setenv "NETCDF_INCLUDES" $base/include
+setenv "NETCDF_LIBRARIES" $base/lib
+setenv "NetCDF_LIBRARIES" $base/lib
+setenv "NETCDF_VERSION" $ver
+
+unset comp
+unset mpi
+unset name
+unset ver
+unset base
+

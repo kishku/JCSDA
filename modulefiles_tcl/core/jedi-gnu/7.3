@@ -1,0 +1,26 @@
+#%Module######################################################################
+##
+##      Intel compiler suite
+##
+proc ModulesHelp { } {
+        puts stderr "Load gnu compilers"
+}
+
+set base /discover/nobackup/mmiesch/modules
+set name gnu
+set ver 7.3
+
+module		 load other/comp/gcc-7.3
+
+prepend-path MODULEPATH $base/modulefiles/compiler/$name/$ver
+
+setenv "FC"   "gfortran"
+setenv "CC"   "gcc"
+setenv "CXX"  "g++"
+setenv "SERIAL_FC"   "gfortran"
+setenv "SERIAL_CC"   "gcc"
+setenv "SERIAL_CXX"  "g++"
+
+unset base
+unset name
+unset ver

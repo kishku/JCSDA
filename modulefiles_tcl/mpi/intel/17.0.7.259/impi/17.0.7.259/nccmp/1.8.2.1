@@ -1,0 +1,28 @@
+#%Module######################################################################
+##
+##     nccmp
+##
+proc ModulesHelp { } {
+        puts stderr "Load nccmp"
+}
+
+set comp intel-17.0.7.259
+set mpi impi-17.0.7.259
+set name nccmp
+set ver 1.8.2.1
+set base /discover/nobackup/mmiesch/modules/$comp/$mpi/$name/$ver
+
+#prereq netcdf
+
+prepend-path "PATH" $base/bin 
+prepend-path "MANPATH" $base/share/man
+
+setenv "NCCMP_ROOT"  $base
+setenv "NCCMP_VERSION" $ver
+
+unset comp
+unset mpi
+unset name
+unset ver
+unset base
+
