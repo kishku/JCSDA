@@ -121,7 +121,7 @@ case $1 in
 #==========================================================================================
 "orion")
 
-    # Orion compiler modules define the environment variable MODULE so in order for
+    # Orion compiler modules define the environment variable COMPILER so in order for
     # the build scripts to function properly we need to replace it with something else
     cd ${JEDI_STACK_ROOT}/buildscripts
     sed -i -e 's/COMPILER/JEDI_COMPILER/g' setup_modules.sh build_stack.sh
