@@ -1,0 +1,26 @@
+#%Module######################################################################
+##
+##      Intel compiler suite
+##
+proc ModulesHelp { } {
+        puts stderr "Load gnu compilers"
+}
+
+set base /g/data/dp9/jtl548/opt/modules
+set name gcc
+set ver system
+
+module load gcc/system
+
+prepend-path MODULEPATH $base/modulefiles/compiler/$name/$ver
+
+setenv "FC"   "gfortran"
+setenv "CC"   "gcc"
+setenv "CXX"  "g++"
+setenv "SERIAL_FC"   "gfortran"
+setenv "SERIAL_CC"   "gcc"
+setenv "SERIAL_CXX"  "g++"
+
+unset base
+unset name
+unset ver
