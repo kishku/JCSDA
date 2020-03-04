@@ -1,15 +1,15 @@
 #!/bin/bash
 
 # Compiler/MPI combination
-#export COMPILER="gnu/7.4.0"
-#export MPI="openmpi/3.1.2"
+export COMPILER="gnu/7.3.0"
+export MPI="openmpi/3.1.2"
 #export MPI="mpich/3.2.1"
 
 #export COMPILER="intel/17.0.1"
 #export MPI="impi/17.0.1"
 
-export COMPILER="clang/6.0.1"
-export MPI="openmpi/3.1.2"
+#export COMPILER="clang/6.0.1"
+#export MPI="openmpi/3.1.2"
 
 # This tells jedi-stack how you want to build the compiler and mpi modules
 # valid options include:
@@ -33,6 +33,7 @@ export MAKE_VERBOSE=Y
 export   MAKE_CLEAN=N
 export DOWNLOAD_ONLY=N
 export STACK_EXIT_ON_FAIL=Y
+export WGET="wget -nv"
 
 # Minimal JEDI Stack
 export      STACK_BUILD_CMAKE=N
@@ -47,7 +48,7 @@ export    STACK_BUILD_PNETCDF=N
 export     STACK_BUILD_NETCDF=N
 export      STACK_BUILD_NCCMP=N
 export        STACK_BUILD_NCO=N
-export    STACK_BUILD_ECBUILD=Y
+export    STACK_BUILD_ECBUILD=N
 export      STACK_BUILD_ECKIT=N
 export      STACK_BUILD_FCKIT=N
 export      STACK_BUILD_ATLAS=N
@@ -67,6 +68,7 @@ export        STACK_BUILD_TKDIFF=N
 export          STACK_BOOST_FULL=N
 export          STACK_BUILD_ESMF=N
 export      STACK_BUILD_BASELIBS=N
-export     STACK_BUILD_PDTOOLKIT=Y
+export     STACK_BUILD_PDTOOLKIT=N
 export          STACK_BUILD_TAU2=N
+export          STACK_BUILD_CGAL=Y
 

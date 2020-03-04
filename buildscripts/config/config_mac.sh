@@ -54,7 +54,6 @@ export        STACK_BUILD_ODB=Y
 export        STACK_BUILD_ODC=Y
 export    STACK_BUILD_ODYSSEY=Y
 export    STACK_BUILD_BUFRLIB=Y
-export       STACK_BUILD_CGAL=Y
 
 # Optional Additions
 export           STACK_BUILD_PIO=N
@@ -69,4 +68,5 @@ export          STACK_BUILD_ESMF=N
 export      STACK_BUILD_BASELIBS=N
 export     STACK_BUILD_PDTOOLKIT=N
 export          STACK_BUILD_TAU2=N
+export          STACK_BUILD_CGAL=N
 
