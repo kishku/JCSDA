@@ -1,11 +1,11 @@
 #!/bin/bash
 # The purpose of this script is to build the software stack using
 # the compiler/MPI combination defined by setup_modules.sh
-# 
+#
 # Arguments:
-# configuration: Determines which libraries will be installed.  
-#     Each supported option will have an associated config_<option>.sh 
-#     file that will be used to 
+# configuration: Determines which libraries will be installed.
+#     Each supported option will have an associated config_<option>.sh
+#     file that will be used to
 #
 # sample usage:
 # build_stack.sh "container"
@@ -33,19 +33,19 @@ if [[ $# -ne 1 ]]; then
 else
     config_file="config/config_$1.sh"
     if [[ -e $config_file ]]; then
-	source $config_file
+      source $config_file
     else
-	set +x
-	echo "ERROR: CONFIG FILE $config_file DOES NOT EXIST!"
-	echo "Currently supported options: "
-	echo ${supported_options[*]}
-	exit 1
+      set +x
+      echo "ERROR: CONFIG FILE $config_file DOES NOT EXIST!"
+      echo "Currently supported options: "
+      echo ${supported_options[*]}
+      exit 1
     fi
 
     # Currently we do not use modules in the containers
     [[ $1 =~ ^container ]] && export MODULES=false || export MODULES=true
 
-fi    
+fi
 
 # Optionally exit on failure
 [[ $STACK_EXIT_ON_FAIL =~ [yYtT] ]] && set -e
@@ -64,7 +64,7 @@ mkdir -p $logdir
 # Minimal JEDI Stack
 
 # start with a clean slate
-$MODULES && (set +x; module purge; set -x)
+$MODULES && (set +x;  source $MODULESHOME/init/bash; module purge; set -x)
 
 #----------------------
 # MPI-independent
@@ -127,6 +127,10 @@ $MODULES && (set +x; module purge; set -x)
 [[ $STACK_BUILD_FCKIT =~ [yYtT] ]] && \
     libs/build_fckit.sh "jcsda" "develop" 2>&1 | tee "$logdir/fckit.log"
 
+# The first argument is the source, either "ecmwf" or "jcsda" (fork)
+[[ $STACK_BUILD_ATLAS =~ [yYtT] ]] && \
+    libs/build_atlas.sh "ecmwf" "0.19.1" 2>&1 | tee "$logdir/atlas.log"
+
 [[ $STACK_BUILD_ODB      =~ [yYtT] ]] && \
     libs/build_odb.sh "0.18.1.r2" 2>&1 | tee "$logdir/odb.log"
 
@@ -176,7 +180,7 @@ $MODULES && (set +x; module purge; set -x)
     libs/build_boost.sh "1.68.0" 2>&1 | tee "$logdir/boost.log"
 
 [[ $STACK_BUILD_ESMF     =~ [yYtT] ]] && \
-    libs/build_esmf.sh "7_1_0r" 2>&1 | tee "$logdir/esmf.log"
+    libs/build_esmf.sh "8_0_0" 2>&1 | tee "$logdir/esmf.log"
 
 [[ $STACK_BUILD_BASELIBS =~ [yYtT] ]] && \
     libs/build_baselibs.sh "5.2.2" 2>&1 | tee "$logdir/baselibs.log"
@@ -190,7 +194,7 @@ $MODULES && (set +x; module purge; set -x)
 # ===============================================================================
 # optionally clean up
 [[ $MAKE_CLEAN =~ [yYtT] ]] && \
-	( $SUDO rm -rf ${JEDI_STACK_ROOT}/${PKGDIR:-"pkg"}; $SUDO rm -rf $logdir )
+  ( $SUDO rm -rf ${JEDI_STACK_ROOT}/${PKGDIR:-"pkg"}; $SUDO rm -rf $logdir )
 
 # ===============================================================================
 

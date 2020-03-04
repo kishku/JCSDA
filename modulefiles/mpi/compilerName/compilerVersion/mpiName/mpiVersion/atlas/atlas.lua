@@ -5,24 +5,23 @@ local pkgName    = myModuleName()
 local pkgVersion = myModuleVersion()
 local pkgNameVer = myModuleFullName()
 
-local hierA        = hierarchyA(pkgNameVer,1)
-local compNameVer  = hierA[1]
+local hierA        = hierarchyA(pkgNameVer,2)
+local mpiNameVer   = hierA[1]
+local compNameVer  = hierA[2]
+local mpiNameVerD  = mpiNameVer:gsub("/","-")
 local compNameVerD = compNameVer:gsub("/","-")
 
-family("mpi")
-
 conflict(pkgName)
-conflict("mpich","impi")
 
-always_load("szip")
-prereq("szip")
+always_load("eckit")
+always_load("fckit")
+
+prereq("eckit")
+prereq("fckit")
 
 local opt = os.getenv("OPT") or "/opt/modules"
 
-local mpath = pathJoin(opt,"modulefiles/mpi",compNameVer,pkgName,pkgVersion)
-prepend_path("MODULEPATH", mpath)
-
-local base = pathJoin(opt,compNameVerD,pkgName,pkgVersion)
+local base = pathJoin(opt,compNameVerD,mpiNameVerD,pkgName,pkgVersion)
 
 prepend_path("PATH", pathJoin(base,"bin"))
 prepend_path("LD_LIBRARY_PATH", pathJoin(base,"lib"))
@@ -30,9 +29,10 @@ prepend_path("DYLD_LIBRARY_PATH", pathJoin(base,"lib"))
 prepend_path("CPATH", pathJoin(base,"include"))
 prepend_path("MANPATH", pathJoin(base,"share","man"))
 
-setenv("MPI_ROOT", base)
+setenv( "ATLAS_PATH", base)
+setenv( "ATLAS_VERSION", pkgVersion)
 
 whatis("Name: ".. pkgName)
 whatis("Version: " .. pkgVersion)
-whatis("Category: library")
-whatis("Description: OpenMPI library")
+whatis("Category: Library")
+whatis("Description: ECMWF Atlas Library")
