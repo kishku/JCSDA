@@ -50,8 +50,8 @@ export    STACK_BUILD_ECBUILD=Y
 export      STACK_BUILD_ECKIT=Y
 export      STACK_BUILD_FCKIT=Y
 export        STACK_BUILD_ODB=Y
-export        STACK_BUILD_ODC=Y
-export    STACK_BUILD_ODYSSEY=Y
+export        STACK_BUILD_ODC=N
+export    STACK_BUILD_ODYSSEY=N
 export    STACK_BUILD_BUFRLIB=Y
 
 # Optional Additions
@@ -59,7 +59,7 @@ export           STACK_BUILD_PIO=Y
 export        STACK_BUILD_PYJEDI=Y
 export      STACK_BUILD_NCEPLIBS=Y
 export        STACK_BUILD_JASPER=N
-export     STACK_BUILD_ARMADILLO=Y
+export     STACK_BUILD_ARMADILLO=N
 export        STACK_BUILD_XERCES=N
 export        STACK_BUILD_TKDIFF=Y
 export          STACK_BOOST_FULL=Y
