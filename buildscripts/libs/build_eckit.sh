@@ -18,10 +18,15 @@ if $MODULES; then
     source $MODULESHOME/init/bash
     module load jedi-$COMPILER
     module load jedi-$MPI
-    module try-load cmake
-    module load zlib udunits
-    module load netcdf
-    module load boost-headers eigen
+    if [[ $LMOD =~ [yYtT] ]]
+    then
+        module try-load cmake
+    else
+        module load cmake
+    fi
+    module load zlib/1.2.11 udunits/2.2.26
+    module load netcdf/4.7.1
+    module load boost/1.71.0 eigen/3.3.7
     module load ecbuild
     module list
     set -x

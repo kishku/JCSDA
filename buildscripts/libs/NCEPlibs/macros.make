@@ -1,1 +1,1 @@
-macros.make.linux.gnu
+macros.make.cheyenne.gnu

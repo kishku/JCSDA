@@ -20,7 +20,10 @@ if $MODULES; then
     module load jedi-$COMPILER
     module load jedi-$MPI
     module load ecbuild
-    module load netcdf
+    # NCI
+    # since eckit modulefile loads netcdf the following line is redundant; in fact
+    # it throws up a conflict
+    #module load netcdf
     module load eckit
     module list
     set -x

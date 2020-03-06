@@ -9,7 +9,12 @@ dash_version=$(echo -n $version | sed -e "s@/@-@g")
 
 if $MODULES; then
 
-    module try-load cmake
+    if [[ $LMOD =~ [yYtT] ]]
+    then
+        module try-load cmake
+    else
+        module load cmake/3.16.2
+    fi
 
     prefix="${PREFIX:-"/opt/modules"}/core/$name/$source-$dash_version"
     if [[ -d $prefix ]]; then
