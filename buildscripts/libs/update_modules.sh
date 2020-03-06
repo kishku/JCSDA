@@ -9,18 +9,35 @@
 # $3 = package version
 
 function update_modules {
-    case $1 in
-        core     )
-            tmpl_file=$JEDI_STACK_ROOT/modulefiles/core/$2/$2.lua
-            to_dir=$OPT/modulefiles/core ;;
-        compiler )
-            tmpl_file=$JEDI_STACK_ROOT/modulefiles/compiler/compilerName/compilerVersion/$2/$2.lua
-            to_dir=$OPT/modulefiles/compiler/$COMPILER ;;
-        mpi      )
-            tmpl_file=$JEDI_STACK_ROOT/modulefiles/mpi/compilerName/compilerVersion/mpiName/mpiVersion/$2/$2.lua
-            to_dir=$OPT/modulefiles/mpi/$COMPILER/$MPI ;;
-        *) echo "ERROR: INVALID MODULE PATH, ABORT!"; exit 1 ;;
-    esac
+
+    if [[ $LMOD =~ [yYtT] ]]
+    then
+        case $1 in
+            core     )
+                tmpl_file=$JEDI_STACK_ROOT/modulefiles/core/$2/$2.lua
+                to_dir=$OPT/modulefiles/core ;;
+            compiler )
+                tmpl_file=$JEDI_STACK_ROOT/modulefiles/compiler/compilerName/compilerVersion/$2/$2.lua
+                to_dir=$OPT/modulefiles/compiler/$COMPILER ;;
+            mpi      )
+                tmpl_file=$JEDI_STACK_ROOT/modulefiles/mpi/compilerName/compilerVersion/mpiName/mpiVersion/$2/$2.lua
+                to_dir=$OPT/modulefiles/mpi/$COMPILER/$MPI ;;
+            *) echo "ERROR: INVALID MODULE PATH, ABORT!"; exit 1 ;;
+        esac
+    else
+        case $1 in
+            core     )
+                tmpl_file=$JEDI_STACK_ROOT/modulefiles_tcl/core/${2}/${3}
+                to_dir=$OPT/modulefiles/core ;;
+            compiler )
+                tmpl_file=$JEDI_STACK_ROOT/modulefiles_tcl/compiler/${compilerName}/${compilerVersion}/${2}/${3}
+                to_dir=$OPT/modulefiles/compiler/$COMPILER ;;
+            mpi      )
+                tmpl_file=$JEDI_STACK_ROOT/modulefiles_tcl/mpi/${compilerName}/${compilerVersion}/${mpiName}/${mpiVersion}/${2}/${3}
+                to_dir=$OPT/modulefiles/mpi/$COMPILER/$MPI ;;
+            *) echo "ERROR: INVALID MODULE PATH, ABORT!"; exit 1 ;;
+        esac
+    fi # [[ $LMOD =~ [yYtT] ]]
 
     [[ -e $tmpl_file ]] || ( echo "ERROR: $tmpl_file NOT FOUND!  ABORT!"; exit 1 )
 
@@ -28,11 +45,21 @@ function update_modules {
 
     cd $to_dir
     $SUDO mkdir -p $2; cd $2
-    $SUDO cp $tmpl_file $3.lua
+    if [[ $LMOD =~ [yYtT] ]]
+    then
+        $SUDO cp $tmpl_file $3.lua
+    else
+        $SUDO cp $tmpl_file $3
+    fi
 
     # Make the latest installed version the default
     [[ -e default ]] && $SUDO rm -f default
-    $SUDO ln -s $3.lua default
+    if [[ $LMOD =~ [yYtT] ]]
+    then
+        $SUDO ln -s $3.lua default
+    else
+        $SUDO ln -s $3 default
+    fi
 
 }
 
