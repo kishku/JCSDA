@@ -32,6 +32,7 @@ export MAKE_VERBOSE=Y
 export   MAKE_CLEAN=N
 export DOWNLOAD_ONLY=N
 export STACK_EXIT_ON_FAIL=Y
+export WGET="wget -nv"
 
 # Minimal JEDI Stack
 export      STACK_BUILD_CMAKE=N
@@ -62,7 +63,7 @@ export        STACK_BUILD_JASPER=N
 export     STACK_BUILD_ARMADILLO=N
 export        STACK_BUILD_XERCES=N
 export        STACK_BUILD_TKDIFF=Y
-export          STACK_BOOST_FULL=Y
+export          STACK_BOOST_FULL=N
 export          STACK_BUILD_ESMF=Y
 export      STACK_BUILD_BASELIBS=Y
 export     STACK_BUILD_PDTOOLKIT=Y
