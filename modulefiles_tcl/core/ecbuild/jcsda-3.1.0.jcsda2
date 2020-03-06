@@ -1,0 +1,20 @@
+#%Module######################################################################
+##
+##      ecbuild
+##
+proc ModulesHelp { } {
+        puts stderr "Load ecbuild"
+}
+
+
+set name ecbuild
+set ver jcsda-3.1.0.jcsda2
+set base /g/data/dp9/jtl548/opt/modules/core/$name/$ver
+
+#prereq cmake
+
+module load cmake/3.16.2
+
+prepend-path "PATH" $base/bin
+
+setenv "ECBUILD_PATH" $base

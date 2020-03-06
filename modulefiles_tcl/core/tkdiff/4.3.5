@@ -1,0 +1,16 @@
+#%Module######################################################################
+##
+##      tkdiff
+##
+proc ModulesHelp { } {
+        puts stderr "Load tkdiff"
+}
+
+
+set name tkdiff
+set ver 4.3.5
+set base /g/data/dp9/jtl548/opt/modules/core/$name/$ver
+
+prepend-path "PATH" $base/bin
+
+setenv "TKDIFF_PATH" $base

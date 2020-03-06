@@ -1,0 +1,29 @@
+#%Module######################################################################
+##
+##    fckit     
+##
+proc ModulesHelp { } {
+        puts stderr "Load fckit"
+}
+
+set comp gcc-system
+set mpi openmpi-4.0.2
+set name fckit
+set ver jcsda-develop
+set base /g/data/dp9/jtl548/opt/modules/$comp/$mpi/$name/$ver
+
+prereq ecbuild
+
+prepend-path "PATH" $base/bin 
+prepend-path "LD_LIBRARY_PATH" $base/lib
+prepend-path "CPATH" $base/include
+prepend-path "MANPATH" $base/share/man
+
+setenv "FCKIT_PATH"  $base
+setenv "FCKIT_VERSION" $ver
+
+unset comp
+unset mpi
+unset name
+unset ver
+unset base

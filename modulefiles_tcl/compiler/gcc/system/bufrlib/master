@@ -1,0 +1,28 @@
+#%Module######################################################################
+##
+##      bufrlib
+##
+proc ModulesHelp { } {
+        puts stderr "Load bufrlib"
+}
+
+set comp gcc-system
+set name bufrlib
+set ver master
+set base /g/data/dp9/jtl548/opt/modules/$comp/$name/$ver
+
+prepend-path LD_LIBRARY_PATH $base/lib
+prepend-path LIBRARY_PATH $base/lib
+
+setenv "bufrlib_ROOT"  $base
+setenv "bufrlib_PATH"  $base
+setenv "bufrlib_DIR"  $base/share/bufrlib/cmake
+setenv "bufrlib_INCLUDES"  $base/include/bufrlib
+setenv "bufrlib_LIBRARIES" $base/lib 
+setenv "bufrlib_VERSION"  $ver
+
+unset comp
+unset name
+unset ver
+unset base
+
