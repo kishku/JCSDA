@@ -47,6 +47,17 @@ else
 
 fi
 
+export compilerName=$(echo $COMPILER | cut -d/ -f1)
+export compilerVersion=$(echo $COMPILER | cut -d/ -f2)
+
+export mpiName=$(echo $MPI | cut -d/ -f1)
+export mpiVersion=$(echo $MPI | cut -d/ -f2)
+
+echo $compilerName
+echo $compilerVersion
+echo $mpiName
+echo $mpiVersion
+
 # Optionally exit on failure
 [[ $STACK_EXIT_ON_FAIL =~ [yYtT] ]] && set -e
 
