@@ -14,9 +14,14 @@ if $MODULES; then
     source $MODULESHOME/init/bash
     module load jedi-$COMPILER
     module load jedi-$MPI
-    module try_load cmake
-    module load netcdf
-    module load pnetcdf
+    if [[ $LMOD =~ [yYtT] ]]
+    then
+        module try_load cmake
+    else
+        module load cmake/3.16.2
+    fi
+    module load netcdf/4.7.1
+    module load pnetcdf/1.11.2
     module list
     set -x
 
