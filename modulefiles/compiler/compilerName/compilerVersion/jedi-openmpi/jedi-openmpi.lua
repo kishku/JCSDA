@@ -18,7 +18,7 @@ prereq(mpi)
 
 local opt = os.getenv("OPT") or "/opt/modules"
 
-local mpath = pathJoin(opt,"modulefiles/mpi",compNameVer,"jedi-openmpi",pkgVersion)
+local mpath = pathJoin(opt,"modulefiles/mpi",compNameVer,"openmpi",pkgVersion)
 prepend_path("MODULEPATH", mpath)
 
 setenv("MPI_FC",  "mpifort")
