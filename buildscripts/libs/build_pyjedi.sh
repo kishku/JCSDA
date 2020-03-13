@@ -32,6 +32,6 @@ git clone https://github.com/JCSDA/py-ncepbufr.git
 cd py-ncepbufr 
 
 CC=gcc python3 setup.py build 
-$SUDO python3 setup.py install 
+$SUDO CC=gcc python3 setup.py install 
 
 exit 0
