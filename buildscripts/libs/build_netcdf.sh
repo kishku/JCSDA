@@ -17,8 +17,12 @@ if $MODULES; then
     module load jedi-$COMPILER
     module load jedi-$MPI
     module load szip
-    module load hdf5
-    module load pnetcdf
+    module load hdf5/1.10.5p
+    module load pnetcdf/1.11.2
+    # test
+    echo "MODULEPATH=$MODULEPATH"
+    echo "module av pnetcdf/1.11.2:"
+    module av pnetcdf/1.11.2
     module list
     set -x
 

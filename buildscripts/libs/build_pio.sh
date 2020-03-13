@@ -20,7 +20,12 @@ if $MODULES; then
     else
         module load cmake/3.16.2
     fi
-    module load netcdf/4.7.1
+    # NCI
+    # use netcdf build which has following support,
+    # --has-hdf5      -> yes
+    # --has-parallel4 -> yes
+    # --has-parallel  -> yes
+    module load netcdf/4.7.1p
     module load pnetcdf/1.11.2
     module list
     set -x

@@ -15,12 +15,12 @@ if $MODULES; then
   set +x
   source $MODULESHOME/init/bash
   module load jedi-$COMPILER
-  module load szip
+  module load szip/2.1.1
   module load jedi-$MPI
-  module load hdf5
-  module load netcdf
-  module load udunits
-  module load pnetcdf
+  module load hdf5/1.10.5p
+  module load netcdf/4.7.1p
+  module load udunits/2.2.26
+  module load pnetcdf/1.11.2
   module list
   set -x
 
