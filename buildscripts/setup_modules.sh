@@ -65,6 +65,9 @@ $SUDO mkdir -p $OPT/modulefiles/core
 $SUDO mkdir -p $OPT/modulefiles/compiler/$compilerName/$compilerVersion
 $SUDO mkdir -p $OPT/modulefiles/mpi/$compilerName/$compilerVersion/$mpiName/$mpiVersion
 
+# NCI
+$SUDO mkdir -p $OPT/modulefiles/apps/jedi
+
 $SUDO mkdir -p $OPT/modulefiles/core/jedi-$compilerName
 $SUDO mkdir -p $OPT/modulefiles/compiler/$compilerName/$compilerVersion/jedi-$mpiName
 
@@ -81,6 +84,10 @@ else
     
     $SUDO cp $JEDI_STACK_ROOT/modulefiles_tcl/compiler/$compilerName/$compilerVersion/jedi-$mpiName/$mpiVersion \
              $OPT/modulefiles/compiler/$compilerName/$compilerVersion/jedi-$mpiName/$mpiVersion
+
+    # NCI
+    $SUDO cp $JEDI_STACK_ROOT/modulefiles_tcl/apps/jedi/${compilerName}-${compilerVersion}_${mpiName}-${mpiVersion} \
+             $OPT/modulefiles/apps/jedi/${compilerName}-${compilerVersion}_${mpiName}-${mpiVersion}
 fi
 
 #===============================================================================

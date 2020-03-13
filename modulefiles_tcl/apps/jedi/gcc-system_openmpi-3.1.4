@@ -1,0 +1,78 @@
+#%Module######################################################################
+##
+##      JEDI stack with gcc/system (gnu 8.2.1) and openmpi
+##
+proc ModulesHelp { } {
+        puts stderr "Load jedi stack with gcc/system (gnu 8.2.1) and openmpi"
+}
+
+module load cmake/3.16.2
+module load git/2.24.1
+# Q. What Python do I use?
+#module load other/anaconda3/2019.03
+module load python3/3.7.4
+module load python3-as-python
+
+module use /g/data/dp9/jtl548/opt/modules/modulefiles/core
+
+module load jedi-gcc/system
+module load jedi-openmpi/3.1.4
+
+module load szip/2.1.1
+module load zlib/1.2.11
+module load udunits/2.2.26
+module load hdf5/1.10.5p
+module load pnetcdf/1.11.2
+
+module load netcdf/4.7.1p
+# NCI
+# ecbuild needs extra NetCDF-related environment variables (these are usually
+# set in jedi-stack netcdf modulefile if netcdf is built
+setenv NETCDF_DIR $env(NETCDF_ROOT)
+setenv NETCDF4_DIR $env(NETCDF_ROOT)
+setenv NETCDF_PATH $env(NETCDF_ROOT)
+setenv NETCDF_INCLUDES $env(NETCDF_ROOT)/include
+setenv NETCDF_INCLUDE_DIRS $env(NETCDF_ROOT)/include
+setenv NETCDF_LIBRARIES $env(NETCDF_ROOT)/lib
+
+setenv NetCDF_ROOT $env(NETCDF_ROOT)
+setenv NetCDF_DIR $env(NETCDF_ROOT)
+setenv NetCDF4_DIR $env(NETCDF_ROOT)
+setenv NetCDF_PATH $env(NETCDF_ROOT)
+setenv NetCDF_INCLUDES $env(NETCDF_ROOT)/include
+setenv NetCDF_INCLUDE_DIRS $env(NETCDF_ROOT)/include
+setenv NetCDF_LIBRARIES $env(NETCDF_ROOT)/lib
+setenv NetCDF_VERSION $env(NETCDF_VERSION)
+
+module load nccmp/1.8.5.0
+
+# python3/3.7.4 loads intel-mkl/2019.3.199
+#module load intel-mkl/2020.0.166
+module load boost/1.71.0
+module load eigen/3.3.7
+module load bufrlib/master
+
+module load ecbuild/jcsda-3.1.0.jcsda2
+module load eckit/jcsda-1.4.0.jcsda3
+module load fckit/jcsda-develop
+module load odb-api/0.18.1.r2
+#module load odc/jcsda-develop  # not yet installed
+module load nceplibs/fv3
+
+# Set compilers to use MPI wrappers
+set tmp1 default_str
+
+set tmp $tmp1
+catch {set tmp [ exec which mpicc ]}
+setenv CC $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpicxx ]}
+setenv CXX $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpifort ]}
+setenv F90 $tmp
+setenv FC  $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpirun ]}
+setenv MPIEXEC $tmp
+

@@ -1,0 +1,47 @@
+#%Module######################################################################
+##
+##      JEDI stack with gcc/system (gnu 8.2.1) and openmpi
+##
+proc ModulesHelp { } {
+        puts stderr "Load jedi stack with gcc/system (gnu 8.2.1) and openmpi"
+}
+
+module load cmake/3.16.2
+module load git/2.24.1
+# Q. What Python do I use?
+#module load other/anaconda3/2019.03
+
+module load jedi-gcc/system
+module load boost/1.71.0
+module load eigen/3.3.7
+module load jedi-openmpi/4.0.2
+
+module load szip/2.1.1
+module load zlib/1.2.11
+module load udunits/2.2.26
+module load hdf5/1.10.5     ???? see libs/build_hdf5.sh which shows how it was build: "--enable-parallel", etc.
+module load pnetcdf/1.11.2  ???? might have to build this again
+module load netcdf/4.7.0    ???? see libs/build_netcdf.sh - which shows how it was build: --enable-pnetcdf --enable-netcdf-4, etc.
+module load nccmp/1.8.5.0
+
+module load ecbuild/jcsda-3.1.0.jcsda2
+module load eckit/jcsda-1.4.0.jcsda3
+#module load odc/jcsda-develop  # not yet installed
+
+# Set compilers to use MPI wrappers
+set tmp1 default_str
+
+set tmp $tmp1
+catch {set tmp [ exec which mpicc ]}
+setenv CC $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpicxx ]}
+setenv CXX $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpifort ]}
+setenv F90 $tmp
+setenv FC  $tmp
+set tmp $tmp1
+catch {set tmp [ exec which mpirun ]}
+setenv MPIEXEC $tmp
+
