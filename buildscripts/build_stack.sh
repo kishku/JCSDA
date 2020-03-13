@@ -78,7 +78,7 @@ build_lib LAPACK lapack 3.7.0
 build_lib BOOST_HDRS boost 1.68.0 headers-only
 build_lib EIGEN3 eigen 3.3.5
 build_lib BUFRLIB bufrlib master
-build_lib ECBUILD ecbuild jcsda 3.1.0.jcsda2
+build_lib ECBUILD ecbuild jcsda bugfix/old-linker
 
 #----------------------
 # These must be rebuilt for each MPI implementation

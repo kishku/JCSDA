@@ -31,12 +31,14 @@ $SUDO python3 -m pip install -U pytest
 # ncepbufr for python
 #####################################################################
 
-cd ${JEDI_STACK_ROOT}/${PKGDIR:-"pkg"}
-git clone https://github.com/JCSDA/py-ncepbufr.git 
-cd py-ncepbufr 
+# this appears to be broken for intel
+# skip for now
+#cd ${JEDI_STACK_ROOT}/${PKGDIR:-"pkg"}
+#git clone https://github.com/JCSDA/py-ncepbufr.git 
+#cd py-ncepbufr 
 
-CC=gcc python setup.py build 
-$SUDO python setup.py install 
+#CC=gcc python setup.py build 
+#$SUDO python setup.py install 
 
-CC=gcc python3 setup.py build 
-$SUDO python3 setup.py install 
+#CC=gcc python3 setup.py build 
+#$SUDO python3 setup.py install 
