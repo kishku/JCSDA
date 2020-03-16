@@ -25,12 +25,7 @@ if $MODULES; then
         module load cmake
     fi
     module load zlib/1.2.11 udunits/2.2.26
-    # NCI
-    # use netcdf build which has following support,
-    # --has-hdf5      -> yes
-    # --has-parallel4 -> yes
-    # --has-parallel  -> yes
-    module load netcdf/4.7.1p
+    module load netcdf/4.7.0
     module load boost/1.71.0 eigen/3.3.7
     module load ecbuild
     module list

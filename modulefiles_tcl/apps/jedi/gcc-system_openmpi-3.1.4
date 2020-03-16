@@ -22,28 +22,8 @@ module load szip/2.1.1
 module load zlib/1.2.11
 module load udunits/2.2.26
 module load hdf5/1.10.5p
-module load pnetcdf/1.11.2
 
-module load netcdf/4.7.1p
-# NCI
-# ecbuild needs extra NetCDF-related environment variables (these are usually
-# set in jedi-stack netcdf modulefile if netcdf is built
-setenv NETCDF_DIR $env(NETCDF_ROOT)
-setenv NETCDF4_DIR $env(NETCDF_ROOT)
-setenv NETCDF_PATH $env(NETCDF_ROOT)
-setenv NETCDF_INCLUDES $env(NETCDF_ROOT)/include
-setenv NETCDF_INCLUDE_DIRS $env(NETCDF_ROOT)/include
-setenv NETCDF_LIBRARIES $env(NETCDF_ROOT)/lib
-
-setenv NetCDF_ROOT $env(NETCDF_ROOT)
-setenv NetCDF_DIR $env(NETCDF_ROOT)
-setenv NetCDF4_DIR $env(NETCDF_ROOT)
-setenv NetCDF_PATH $env(NETCDF_ROOT)
-setenv NetCDF_INCLUDES $env(NETCDF_ROOT)/include
-setenv NetCDF_INCLUDE_DIRS $env(NETCDF_ROOT)/include
-setenv NetCDF_LIBRARIES $env(NETCDF_ROOT)/lib
-setenv NetCDF_VERSION $env(NETCDF_VERSION)
-
+module load netcdf/4.7.0
 module load nccmp/1.8.5.0
 
 # python3/3.7.4 loads intel-mkl/2019.3.199

@@ -18,11 +18,7 @@ if $MODULES; then
     module load jedi-$MPI
     module load szip
     module load hdf5/1.10.5p
-    module load pnetcdf/1.11.2
-    # test
-    echo "MODULEPATH=$MODULEPATH"
-    echo "module av pnetcdf/1.11.2:"
-    module av pnetcdf/1.11.2
+    module load zlib/1.2.11
     module list
     set -x
 
@@ -94,8 +90,13 @@ software=$name-"c"-$version
 [[ -d build ]] && rm -rf build
 mkdir -p build && cd build
 
-[[ -z $mpi ]] || extra_conf="--enable-pnetcdf --enable-netcdf-4 --enable-parallel-tests"
-../configure --prefix=$prefix $extra_conf
+# NCI
+# removed "--enable-pnetcdf" to disable parallel IO using pnetcdf
+# TEMPORARY: Unidata remote testing is currently not working so disable DAP
+# remote testing using "--disable-dap-remote-tests"; once it is back up netcdf
+# should be rebuilt with this removed
+[[ -z $mpi ]] || extra_conf="--enable-netcdf-4 --enable-parallel-tests"
+../configure --prefix=$prefix $extra_conf --disable-dap-remote-tests
 
 make -j${NTHREADS:-4}
 [[ $MAKE_CHECK =~ [yYtT] ]] && make check
