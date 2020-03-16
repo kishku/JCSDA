@@ -1,0 +1,30 @@
+#%Module######################################################################
+##
+##    eckit     
+##
+proc ModulesHelp { } {
+        puts stderr "Load eckit"
+}
+
+set comp gcc-system
+set mpi openmpi-3.1.4
+set name eckit
+set ver jcsda-1.4.0.jcsda3
+set base /g/data/dp9/jtl548/opt/modules/$comp/$mpi/$name/$ver
+
+module load netcdf/4.7.0
+module load ecbuild
+
+prepend-path "PATH" $base/bin 
+prepend-path "LD_LIBRARY_PATH" $base/lib
+prepend-path "CPATH" $base/include
+prepend-path "MANPATH" $base/share/man
+
+setenv "ECKIT_PATH"  $base
+setenv "ECKIT_VERSION" $ver
+
+unset comp
+unset mpi
+unset name
+unset ver
+unset base
