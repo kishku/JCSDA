@@ -12,7 +12,7 @@ set name fckit
 set ver jcsda-develop
 set base /g/data/dp9/jtl548/opt/modules/$comp/$mpi/$name/$ver
 
-prereq ecbuild
+module load eckit/jcsda-1.4.0.jcsda3
 
 prepend-path "PATH" $base/bin 
 prepend-path "LD_LIBRARY_PATH" $base/lib
