@@ -64,8 +64,8 @@ export     STACK_BUILD_ARMADILLO=N
 export        STACK_BUILD_XERCES=N
 export        STACK_BUILD_TKDIFF=Y
 export          STACK_BOOST_FULL=N
-export          STACK_BUILD_ESMF=Y
-export      STACK_BUILD_BASELIBS=Y
+export          STACK_BUILD_ESMF=N
+export      STACK_BUILD_BASELIBS=N
 export     STACK_BUILD_PDTOOLKIT=Y
 export          STACK_BUILD_TAU2=Y
 
