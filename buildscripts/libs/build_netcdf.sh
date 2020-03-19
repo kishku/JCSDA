@@ -95,6 +95,9 @@ mkdir -p build && cd build
 # TEMPORARY: Unidata remote testing is currently not working so disable DAP
 # remote testing using "--disable-dap-remote-tests"; once it is back up netcdf
 # should be rebuilt with this removed
+# N.B. parallel IO tests during 'make check' seem to fail randomly when executed
+#      on login nodes; a workaround is to run configure keeping "--enable-parallel-tests"
+#      and 'make -j${NTHREADS:-4}' but run 'make check' manually on a compute node
 [[ -z $mpi ]] || extra_conf="--enable-netcdf-4 --enable-parallel-tests"
 ../configure --prefix=$prefix $extra_conf --disable-dap-remote-tests
 
