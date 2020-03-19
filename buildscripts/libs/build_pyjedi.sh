@@ -25,15 +25,18 @@ $SUDO python -m pip install -U wheel netCDF4 matplotlib
 module unload python2 python3
 module load python3/3.7.4
 
-$SUDO python3 -m pip install -U pip setuptools
-$SUDO python3 -m pip install -U numpy
-$SUDO python3 -m pip install -U wheel netCDF4 matplotlib
-$SUDO python3 -m pip install -U pandas
-$SUDO python3 -m pip install -U pycodestyle
-$SUDO python3 -m pip install -U autopep8
-$SUDO python3 -m pip install -U cffi
-$SUDO python3 -m pip install -U pycparser
-$SUDO python3 -m pip install -U pytest
+# NCI
+# Python3 pip does not seem to automatically install packages under user's .local/
+# so "--user" is added
+$SUDO python3 -m pip install -U --user pip setuptools
+$SUDO python3 -m pip install -U --user numpy
+$SUDO python3 -m pip install -U --user wheel netCDF4 matplotlib
+$SUDO python3 -m pip install -U --user pandas
+$SUDO python3 -m pip install -U --user pycodestyle
+$SUDO python3 -m pip install -U --user autopep8
+$SUDO python3 -m pip install -U --user cffi
+$SUDO python3 -m pip install -U --user pycparser
+$SUDO python3 -m pip install -U --user pytest
 
 #####################################################################
 # ncepbufr for python
