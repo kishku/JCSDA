@@ -53,11 +53,11 @@ export      STACK_BUILD_ATLAS=N
 export        STACK_BUILD_ODB=N
 export        STACK_BUILD_ODC=N
 export    STACK_BUILD_ODYSSEY=N
-export    STACK_BUILD_BUFRLIB=Y
+export    STACK_BUILD_BUFRLIB=N
 
 # Optional Additions
 export           STACK_BUILD_PIO=N
-export        STACK_BUILD_PYJEDI=Y
+export        STACK_BUILD_PYJEDI=N
 export      STACK_BUILD_NCEPLIBS=N
 export        STACK_BUILD_JASPER=N
 export     STACK_BUILD_ARMADILLO=N
