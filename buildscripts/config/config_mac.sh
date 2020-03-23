@@ -1,10 +1,9 @@
 #!/bin/bash
 
 # Compiler/MPI combination
-export JEDI_COMPILER="clang/10.0.0"
-#export JEDI_COMPILER="clang/10.0.1"
-export JEDI_MPI="openmpi/3.1.2"
-#export JEDI_MPI="mpich/3.3.1"
+export JEDI_COMPILER="clang/11.0.0"
+#export JEDI_MPI="openmpi/3.1.2"
+export JEDI_MPI="mpich/3.3.1"
 
 # This tells jedi-stack how you want to build the compiler and mpi modules
 # valid options include:
@@ -15,9 +14,6 @@ export JEDI_MPI="openmpi/3.1.2"
 # from-source: This is to build from source
 export COMPILER_BUILD="native-pkg"
 export MPI_BUILD="from-source"
-
-# For nccmp. This magically fixes the make install command.
-export MKDIR_P="mkdir -p"
 
 # Build options
 export PREFIX=/opt/modules
@@ -56,7 +52,7 @@ export    STACK_BUILD_ODYSSEY=Y
 export    STACK_BUILD_BUFRLIB=Y
 
 # Optional Additions
-export           STACK_BUILD_PIO=N
+export           STACK_BUILD_PIO=Y
 export        STACK_BUILD_PYJEDI=N
 export      STACK_BUILD_NCEPLIBS=N
 export        STACK_BUILD_JASPER=N
