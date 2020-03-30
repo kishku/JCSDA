@@ -90,7 +90,7 @@ build_lib ECKIT eckit jcsda 1.4.0.jcsda3
 build_lib FCKIT fckit jcsda develop
 build_lib ATLAS atlas ecmwf 0.19.1
 build_lib ODB odb 0.18.1.r2
-build_lib ODC odc jcsda develop
+build_lib ODC odc jcsda 1.0.2.jcsda1
 build_lib ODYSSEY odyssey jcsda develop
 
 # ===============================================================================

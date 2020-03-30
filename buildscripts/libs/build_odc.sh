@@ -39,7 +39,7 @@ export CC=$MPI_CC
 export CXX=$MPI_CXX
 export F9X=$FC
 
-software=odc
+software=odc-1
 cd ${JEDI_STACK_ROOT}/${PKGDIR:-"pkg"}
 
 [[ -d $software ]] || git clone https://github.com/$source/$software.git
