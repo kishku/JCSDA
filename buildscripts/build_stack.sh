@@ -74,9 +74,6 @@ else
    export PATH=${PREFIX}/bin:$PATH
 fi
 
-echo MSM PATH $PATH
-echo MSM LD_LIBRARY_PATH $LD_LIBRARY_PATH
-echo MSM HDF5_ROOT $HDF5_ROOT
 #----------------------
 # MPI-independent
 # - should add a check at some point to see if they are already there.

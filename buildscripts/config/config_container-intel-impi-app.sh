@@ -70,7 +70,13 @@ export     STACK_BUILD_PDTOOLKIT=N
 export          STACK_BUILD_TAU2=N
 
 # For help with finding packages
+export PATH=${PREFIX}/bin:$PATH
+export LD_LIBRARY_PATH=${PREFIX}/lib:$LD_LIBRARY_PATH
+export LIBRARY_PATH=${PREFIX}/lib:$LIBRARY_PATH
+export CPATH=${PREFIX}/includ3:$CPATH
 export HDF5=${PREFIX}
 export HDF5_PATH=${PREFIX}
+export HDF5_INCLUDES=${PREFIX}/include
+export HDF5_LIBRARIES=${PREFIX}/lib
 export NETCDF=${PREFIX}
 export PNETCDF=${PREFIX}
