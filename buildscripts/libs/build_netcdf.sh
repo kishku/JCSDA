@@ -11,17 +11,6 @@ cxx_version=$3
 compiler=$(echo $JEDI_COMPILER | sed 's/\//-/g')
 mpi=$(echo $JEDI_MPI | sed 's/\//-/g')
 
-#================
-echo "========================================================="
-echo "MSM LD_LIBRARY_PATH " $LD_LIBRARY_PATH
-echo "MSM CPATH " $CPATH
-echo "MSM HDF5_ROOT " $HDF5_ROOT
-echo "MSM HDF5_INCLUDES " $HDF5_INCLUDES
-echo "MSM HDF5_PATH " $HDF5_PATH
-echo "MSM PATH " $PATH
-echo "========================================================="
-#================
-
 if $MODULES; then
     set +x
     source $MODULESHOME/init/bash
