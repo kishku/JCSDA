@@ -49,9 +49,6 @@ else
 
 fi
 
-echo "MSM DEB " $ZLIB_ROOT
-export ZLIB_ROOT
-
 # this is needed to set environment variables if modules are not used
 $MODULES || no_modules $1
 

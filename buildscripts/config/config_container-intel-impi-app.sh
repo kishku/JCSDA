@@ -33,33 +33,6 @@ export DOWNLOAD_ONLY=F
 export STACK_EXIT_ON_FAIL=T
 export WGET="wget -nv"
 
-# set install directories
-export NETCDF=/usr/local/jedi
-export NETCDF_ROOT=/usr/local/jedi
-export SZIP_ROOT=/usr/local/jedi
-export SZIP=/usr/local/jedi
-export ZLIB_ROOT=/usr/local/jedi
-export UDUNITS_ROOT=/usr/local/jedi
-export PNETCDF_ROOT=/usr/local/jedi
-export PNETCDF=/usr/local/jedi
-export HDF5_ROOT=/usr/local/jedi
-export BOOST_ROOT=/usr/local/jedi
-export EIGEN_ROOT=/usr/local/jedi
-export ECBUILD_ROOT=/usr/local/jedi
-export ECKIT_ROOT=/usr/local/jedi
-export NCCMP_ROOT=/usr/local/jedi
-export PIO_ROOT=/usr/local/jedi
-export PIO=/usr/local/jedi
-export SERIAL_CC=icc
-export SERIAL_CXX=icpc
-export SERIAL_FC=ifort
-export MPI_CC=mpiicc
-export MPI_CXX=mpiicpc
-export MPI_FC=mpiifort
-export CC=mpiicc
-export CXX=mpiicpc
-export FC=mpiifort
-
 # Minimal JEDI Stack
 export      STACK_BUILD_CMAKE=N
 export       STACK_BUILD_SZIP=Y

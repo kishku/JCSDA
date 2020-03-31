@@ -21,7 +21,6 @@ if $MODULES; then
     fi
 else
     prefix=${ZLIB_ROOT:-"/usr/local"}
-    echo "MSM: "ZLIB_ROOT $prefix
 fi
 
 export FC=$SERIAL_FC
