@@ -68,3 +68,9 @@ export          STACK_BUILD_ESMF=N
 export      STACK_BUILD_BASELIBS=N
 export     STACK_BUILD_PDTOOLKIT=N
 export          STACK_BUILD_TAU2=N
+
+# For help with finding packages
+export HDF5=${PREFIX}
+export HDF5_PATH=${PREFIX}
+export NETCDF=${PREFIX}
+export PNETCDF=${PREFIX}

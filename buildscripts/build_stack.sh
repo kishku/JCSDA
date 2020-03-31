@@ -64,7 +64,13 @@ mkdir -p $logdir
 
 # start with a clean slate
 $MODULES && (set +x;  source $MODULESHOME/init/bash; module purge; set -x)
+         || (export LD_LIBRARY_PATH=${PREFIX}/lib:$LD_LIBRARY_PATH;
+	     export LIBRARY_PATH=${PREFIX}/lib:$LIBRARY_PATH;
+	     export PATH=${PREFIX}/bin:$PATH)
 
+echo MSM PATH $PATH
+echo MSM LD_LIBRARY_PATH $LD_LIBRARY_PATH
+echo MSM HDF5_ROOT $HDF5_ROOT
 #----------------------
 # MPI-independent
 # - should add a check at some point to see if they are already there.
