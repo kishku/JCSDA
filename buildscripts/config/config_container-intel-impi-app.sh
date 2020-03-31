@@ -20,7 +20,7 @@ export COMPILER_BUILD="native-pkg"
 export MPI_BUILD="native-pkg"
 
 # Build options
-export PREFIX=/usr/local/jedi
+export PREFIX=/opt/jedi
 export USE_SUDO=N
 export PKGDIR=pkg
 export LOGDIR=buildscripts/log

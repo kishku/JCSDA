@@ -72,6 +72,7 @@ else
    export LD_LIBRARY_PATH=${PREFIX}/lib:$LD_LIBRARY_PATH
    export LIBRARY_PATH=${PREFIX}/lib:$LIBRARY_PATH
    export PATH=${PREFIX}/bin:$PATH
+   export CPATH=${PREFIX}/bin:$CPATH
 fi
 
 #----------------------
