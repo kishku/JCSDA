@@ -63,10 +63,16 @@ mkdir -p $logdir
 # Minimal JEDI Stack
 
 # start with a clean slate
-$MODULES && (set +x;  source $MODULESHOME/init/bash; module purge; set -x)
-         || (export LD_LIBRARY_PATH=${PREFIX}/lib:$LD_LIBRARY_PATH;
-	     export LIBRARY_PATH=${PREFIX}/lib:$LIBRARY_PATH;
-	     export PATH=${PREFIX}/bin:$PATH)
+if $MODULES; then
+    set +x
+    source $MODULESHOME/init/bash
+    module purge
+    set -x
+else
+   export LD_LIBRARY_PATH=${PREFIX}/lib:$LD_LIBRARY_PATH
+   export LIBRARY_PATH=${PREFIX}/lib:$LIBRARY_PATH
+   export PATH=${PREFIX}/bin:$PATH
+fi
 
 echo MSM PATH $PATH
 echo MSM LD_LIBRARY_PATH $LD_LIBRARY_PATH
