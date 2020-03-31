@@ -25,6 +25,7 @@ if $MODULES; then
 else
     prefix=${EIGEN_ROOT:-"/usr/local"}
 fi
+echo "MSM prefix : $prefix $EIGEN_ROOT
 
 cd $JEDI_STACK_ROOT/${PKGDIR:-"pkg"}
 
