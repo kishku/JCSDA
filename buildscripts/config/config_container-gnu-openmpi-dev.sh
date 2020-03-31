@@ -49,7 +49,7 @@ export      STACK_BUILD_ATLAS=N
 export        STACK_BUILD_ODB=N
 export        STACK_BUILD_ODC=Y
 export    STACK_BUILD_ODYSSEY=N
-export    STACK_BUILD_BUFRLIB=Y
+export    STACK_BUILD_BUFRLIB=N
 
 # Optional Additions
 export           STACK_BUILD_PIO=Y
