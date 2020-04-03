@@ -44,9 +44,8 @@ export        STACK_BUILD_NCO=Y
 export    STACK_BUILD_ECBUILD=N
 export      STACK_BUILD_ECKIT=N
 export      STACK_BUILD_FCKIT=N
-export        STACK_BUILD_ODB=N
 export        STACK_BUILD_ODC=N
-export    STACK_BUILD_ODYSSEY=N
+export      STACK_BUILD_PYODC=N
 export    STACK_BUILD_BUFRLIB=N
 
 # Optional Additions
