@@ -65,7 +65,6 @@ export    STACK_BUILD_ECBUILD=N
 export      STACK_BUILD_ECKIT=N
 export      STACK_BUILD_FCKIT=N
 export        STACK_BUILD_ODC=Y
-export      STACK_BUILD_PYODC=Y
 export    STACK_BUILD_BUFRLIB=Y
 
 # Optional Additions

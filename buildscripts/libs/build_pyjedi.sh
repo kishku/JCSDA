@@ -40,3 +40,15 @@ $SUDO python setup.py install
 
 CC=gcc python3 setup.py build 
 $SUDO python3 setup.py install 
+
+#####################################################################
+# pyodc
+#####################################################################
+
+cd ${JEDI_STACK_ROOT}/${PKGDIR:-"pkg"}
+git clone https://github.com/JCSDA/pyodc.git
+cd pyodc
+git checkout 1.0.0.jcsda1
+
+python setup.py bdist_wheel
+$SUDO python -m pip install --ignore-installed dist/pyodc*.whl

@@ -26,7 +26,6 @@ load("eckit")
 load("fckit")
 
 load("odc")
-load("pyodc")
 load("nccmp")
 
 setenv("CC","mpicc")

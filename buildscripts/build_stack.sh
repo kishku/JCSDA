@@ -91,7 +91,6 @@ build_lib FCKIT fckit jcsda develop
 build_lib ATLAS atlas ecmwf 0.19.1
 build_lib ODB odb 0.18.1.r2
 build_lib ODC odc jcsda 1.0.2.jcsda1
-build_lib PYODC pyodc jcsda 1.0.0.jcsda1
 
 # ===============================================================================
 # Optional Extensions to the JEDI Stack

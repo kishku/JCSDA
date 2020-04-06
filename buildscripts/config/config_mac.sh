@@ -47,7 +47,6 @@ export      STACK_BUILD_ECKIT=Y
 export      STACK_BUILD_FCKIT=Y
 export      STACK_BUILD_ATLAS=Y
 export        STACK_BUILD_ODC=Y
-export      STACK_BUILD_PYODC=Y
 export    STACK_BUILD_BUFRLIB=Y
 
 # Optional Additions
