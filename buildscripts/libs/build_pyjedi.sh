@@ -48,7 +48,7 @@ $SUDO python3 setup.py install
 cd ${JEDI_STACK_ROOT}/${PKGDIR:-"pkg"}
 git clone https://github.com/JCSDA/pyodc.git
 cd pyodc
-git checkout 1.0.0.jcsda1
+git checkout 1.0.1.jcsda1
 
 python3 setup.py bdist_wheel
 $SUDO python3 -m pip install --ignore-installed dist/pyodc*.whl
