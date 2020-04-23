@@ -5,7 +5,7 @@
 # https://www.cgal.org
 #
 # WARNING: 
-#   Dependencies in clud the gnu gmp and mpfr libraries
+#   Dependencies include the gnu gmp and mpfr libraries
 #   Also, if you are using gnu compilers prior to 9.0, then
 #   you also need to install the boost.thread libraries.
 #   These are often availble from package managers such as
