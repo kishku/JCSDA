@@ -29,7 +29,7 @@ version=$1
 if $MODULES; then
     set +x
     source $MODULESHOME/init/bash
-    module load jedi-$COMPILER
+    module load jedi-$JEDI_COMPILER
     module load boost-headers
     module load zlib
     module list
